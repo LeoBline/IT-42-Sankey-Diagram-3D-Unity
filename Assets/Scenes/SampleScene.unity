@@ -123,6 +123,35 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &69425002 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5880812906364929365, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
+  m_PrefabInstance: {fileID: 839409166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &69425008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69425002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c71cab6eb0dd4a51881a2ed66a03c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  JsonReaderObject: {fileID: 1861260117}
+  textlist: []
+  LineReadererPointsCount: 200
+  PositionScale: 1
+  RatioHighAndArea: 16
+  textFontSize: 16
+  lineAlpha: 0.181
+  continulFlag: 0
+  dragFlag: 0
+  reloadFlag: 0
+  dragNode: 
 --- !u!20 &366661948 stripped
 Camera:
   m_CorrespondingSourceObject: {fileID: 794903884559047301, guid: cf4830d0d9e323647b8f1d9d69e068ed, type: 3}
@@ -327,6 +356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: _anvas
       objectReference: {fileID: 0}
+    - target: {fileID: 5880812906781945074, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5880812906781945086, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -393,7 +426,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5880812906781945086, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -32
+      value: 2464
       objectReference: {fileID: 0}
     - target: {fileID: 5880812906781945086, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -641,3 +674,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cf4830d0d9e323647b8f1d9d69e068ed, type: 3}
+--- !u!1 &1861260117 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5880812906316396585, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
+  m_PrefabInstance: {fileID: 839409166}
+  m_PrefabAsset: {fileID: 0}

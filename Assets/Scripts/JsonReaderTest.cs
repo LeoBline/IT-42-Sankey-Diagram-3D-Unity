@@ -44,7 +44,7 @@ public class NodesStructure
     public void tostring()
     {
         
-        Debug.Log("Name: " + this.name + " Value: " + this.value + " column:" + this.depth + " truelayer :" + this.layer + " x0 " + this.x0 + " x1 " + this.x1 + " y0 " + this.y0 + " y1 " + this.y1);
+        
 
 /*        if (TargetLinks != null)
         {

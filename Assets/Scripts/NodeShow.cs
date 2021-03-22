@@ -37,10 +37,10 @@ public class NodeShow : MonoBehaviour {
     // Start is called before the first frame update
     void Start()
     {
-        GameObject obj1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        //设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
-        obj1.transform.position = new Vector3(1, 1, 1);
-        obj1.transform.localScale = new Vector3(500,2,500);
+        //GameObject obj1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        ////设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
+        //obj1.transform.position = new Vector3(1, 1, 1);
+        //obj1.transform.localScale = new Vector3(500,2,500);
        
         textlist = new List<GameObject>();
         NodesStructure[] nodesStructures = JsonReaderObject.GetComponent<JsonReaderTest>().NodesStructures;

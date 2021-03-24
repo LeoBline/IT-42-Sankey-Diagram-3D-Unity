@@ -41,22 +41,28 @@ public class NodesStructure
     }
     public List<LinksStructure> TargetLinks { get; set; }
 
-    public void tostring()
-    {
+//    public void tostring()
+//    {
         
         
 
-/*        if (TargetLinks != null)
-        {
-            for (int i = 0; i < TargetLinks.Count; i++)
-            {
-                Debug.Log("Source: " + TargetLinks[i].sourceNode.name + " Target: " + TargetLinks[i].targetNode.name + " Value" + TargetLinks[i].value);
-            }
-        }*/
-    }
+///*        if (TargetLinks != null)
+//        {
+//            for (int i = 0; i < TargetLinks.Count; i++)
+//            {
+//                Debug.Log("Source: " + TargetLinks[i].sourceNode.name + " Target: " + TargetLinks[i].targetNode.name + " Value" + TargetLinks[i].value);
+//            }
+//        }*/
+//    }
 
 
-
+    /**
+     *  calculate current node's value
+     *  计算当前node的value
+     *  分别计算传入/传出当前node的能量，并将其中较大的一方设为value
+     *  对于桑基图中间的node传入和传出是一样大的，
+     *  对于在桑基图两端的node只拥有传入或传出能量
+     */
     public void getvalue()
     {
         double sourceValue = 0,targetValue=0;
@@ -87,7 +93,9 @@ public class NodesStructure
 }
 
 
-
+/**
+ * 按列存储node，按列在桑基图中画出位置
+ */
 public class ColumnNodes
 {
     public List<NodesStructure> Columnnode { get; set; }
@@ -106,6 +114,10 @@ public class LinksStructure
     public NodesStructure TargetNode { get; set; }
 }
 
+/**
+ * 过渡用的对象
+ * json 数据中的link 所拥有的数据
+ */
 public class LinksItem
     {
         /// <summary>
@@ -133,12 +145,14 @@ public class LinksItem
         /// </summary>
         public List<LinksItem> links { get; set; }
     }
+
+
 public class JsonReaderTest : MonoBehaviour
 {
     private RectTransform graphContainer;
     public NodesStructure[] NodesStructures;
     public  LinksStructure[] LinksStructures;
-    double x0 = 1, y0 = 1, x1 = 959, y1 = 494; // extent
+    double x0 = 1, y0 = 1, x1 = 959, y1 = 494; // boundary of the Sankey in Unity 
     [Header("Attributes")]
     [Range(1, 100)]
     public double nodeWidth = 15; // nodeWidth
@@ -325,12 +339,11 @@ public class JsonReaderTest : MonoBehaviour
 
             ComputeNodeBreadths();
             computeLinkBreadths();
-            Debug.Log("--------------------------------");
-            for (int i = 0; i < NodesStructures.Length; i++)
-            {
-                NodesStructures[i].tostring();
-            }
-
+            //Debug.Log("--------------------------------");
+            //for (int i = 0; i < NodesStructures.Length; i++)
+            //{
+            //    NodesStructures[i].tostring();
+            //}
             gameObject.SetActive(false);
             gameObject.transform.parent.GetComponent<NodeShow>().reloadFlag = true;
         }

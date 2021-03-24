@@ -89,16 +89,16 @@ public class NodeShow : MonoBehaviour {
             string name = nodesStructures[i].name;
             yPosition += barHight / 2;
             xPosition += Width / 2;
-            float ZPosition = (float)Math.Pow(Convert.ToDouble(barHight / 4), Convert.ToDouble(1) / 3);
-            float areaWidth = (float)Math.Pow(barHight, 0.3333);
-            float areaHigh = areaWidth * (float)Math.Pow(RatioHighAndArea, 0.5);
-            barHight = areaWidth * RatioHighAndArea;
-            areaWidth = areaHigh;
+            //float ZPosition = (float)Math.Pow(Convert.ToDouble(barHight / 4), Convert.ToDouble(1) / 3);
+            //float areaWidth = (float)Math.Pow(barHight, 0.3333);
+            //float areaHigh = areaWidth * (float)Math.Pow(RatioHighAndArea, 0.5);
+            //barHight = areaWidth * RatioHighAndArea;
+            //areaWidth = areaHigh;
 
 
 
 
-            GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition * PositionScale, barHight/2,yPosition* PositionScale), areaWidth, barHight, areaWidth, "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
+            GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition * PositionScale, barHight/2,yPosition* PositionScale), 10, barHight, 10, "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
         }
         for (int i = 0; i < links.Length; i++)
         {
@@ -156,32 +156,33 @@ public class NodeShow : MonoBehaviour {
     private GameObject CreateLink(LinksStructure link)
     {
 
-            GameObject lineobject = new GameObject("line");
-            lineobject.AddComponent<LineRenderer>();
-            lineobject.transform.SetParent(graphContainer, false);
-            LineRenderer line = lineobject.GetComponent<LineRenderer>();
-            line.sortingOrder = -9;
-            line.useWorldSpace = false;
-            line.motionVectors = false;
-            line.material = new Material(Shader.Find("Sprites/Default"));
-            line.SetColors(new Color(1, 1, 1, lineAlpha), new Color(1, 1, 1, lineAlpha));
-            float y0_3D = (float)link.y0_3D;
-            float y1_3D = (float)link.y1_3D;
-            float width = (float)link.width;
-        float z0 = (float)(link.SourceNode.y0 + ((float)link.SourceNode.y1 - (float)link.SourceNode.y0) / 2)/3;
-        float x0 = (float)(link.SourceNode.x0 + ((float)link.SourceNode.x1 - (float)link.SourceNode.x0) / 2)/3;
-        float z1 = (float)(link.TargetNode.y1 + ((float)link.TargetNode.y1 - (float)link.TargetNode.y0) / 2)/3;
-        float x1 = (float)(link.TargetNode.x0 + ((float)link.TargetNode.x1 - (float)link.TargetNode.x0) / 2)/3;
-        Debug.Log("x0"+x0+"y0"+y0_3D+"z0"+z0+"x1"+x1+"y1"+y1_3D+"z1"+z1);
-        Vector3 n1 = new Vector3(x0, y0_3D,z0);
-        Vector3 n2 = new Vector3((x0 + x1) / 2, y0_3D,(z0 + z1) / 2);
-        Vector3 n3 = new Vector3((x0 + x1) / 2,y1_3D, (z0 + z1)/2);
-        Vector3 n4 = new Vector3(x1,y1_3D, z1);
+        GameObject lineobject = new GameObject("line");
+        lineobject.AddComponent<LineRenderer>();
+        lineobject.transform.SetParent(graphContainer, false);
+        LineRenderer line = lineobject.GetComponent<LineRenderer>();
+        line.alignment = LineAlignment.TransformZ;
+        line.sortingOrder = -9;
+        line.useWorldSpace = false;
+        line.motionVectors = false;
+        line.material = new Material(Shader.Find("Sprites/Default"));
+        line.SetColors(new Color(1, 1, 1, lineAlpha), new Color(1, 1, 1, lineAlpha));
+        float y0_3D = (float)link.y0_3D;
+        float y1_3D = (float)link.y1_3D;
+        float width = (float)link.width;
+        float z0 = (float)(link.SourceNode.y0 + ((float)link.SourceNode.y1 - (float)link.SourceNode.y0) / 2) * PositionScale;
+        float x0 = (float)(link.SourceNode.x0 + ((float)link.SourceNode.x1 - (float)link.SourceNode.x0) / 2) * PositionScale;
+        float z1 = (float)(link.TargetNode.y0 + ((float)link.TargetNode.y1 - (float)link.TargetNode.y0) / 2) * PositionScale;
+        float x1 = (float)(link.TargetNode.x0 + ((float)link.TargetNode.x1 - (float)link.TargetNode.x0) / 2) * PositionScale;
+        Debug.Log("x0" + x0 + "y0" + y0_3D + "z0" + z0 + "x1" + x1 + "y1" + y1_3D + "z1" + z1);
+        Vector3 n1 = new Vector3(x0, y0_3D, z0);
+        Vector3 n2 = new Vector3((x0 + x1) / 2, y0_3D, (z0 + z1) / 2);
+        Vector3 n3 = new Vector3((x0 + x1) / 2, y1_3D, (z0 + z1) / 2);
+        Vector3 n4 = new Vector3(x1, y1_3D, z1);
         DrawLinearCurve(line, n1, n2, n3, n4, (float)link.width);
         return lineobject;
 
 
-        
+
     }
 
 

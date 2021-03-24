@@ -24,6 +24,9 @@ public class ScreenshotHandler : MonoBehaviour
       
 
     }
+    /**
+     * When "save" button click, call this function
+     */
     private void OnPostRender()
     {
         if (takeScreenshotOnNectFrame)

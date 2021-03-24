@@ -1,0 +1,22 @@
+﻿<Properties StartupConfiguration="{B8374293-16A3-8539-BD35-636A7E8CA77E}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NodeShow.cs">
+    <Files>
+      <File FileName="Assets/Scripts/NodeShow.cs" Line="73" Column="7" />
+      <File FileName="Assets/Scripts/Mouse.cs" Line="22" Column="38" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="IT-42-Sankey-Diagram-3D-Unity" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8cde9dbf-001d-4129-8dcd-4a1df43ae1c6" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

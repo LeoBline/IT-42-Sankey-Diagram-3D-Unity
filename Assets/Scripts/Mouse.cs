@@ -14,7 +14,7 @@ public class Mouse : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-           Screen.lockCursor = true;
+          // Screen.lockCursor = true;
         
     }
     private void OnMouseEnter()

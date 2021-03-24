@@ -9,7 +9,7 @@ public class NodeShow : MonoBehaviour {
     [SerializeField] private Sprite dotSprite;
     public GameObject JsonReaderObject;
     public List<GameObject> textlist;
-    private RectTransform graphContainer;
+    private RectTransform groupContainer;
     private RectTransform window_Graph;
     public int LineReadererPointsCount = 200;
     public float PositionScale = 0.25f;
@@ -48,7 +48,7 @@ public class NodeShow : MonoBehaviour {
         barlist = new GameObject[nodesStructures.Length];
         linklist = new GameObject[JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures.Length];
         instance = this;
-      
+        groupContainer = transform.GetComponent<RectTransform>();
         GameObjectList = new List<GameObject>();
         GameLineObjectList = new List<GameObject>();
         showGraph(nodesStructures, linksStructures);
@@ -70,7 +70,8 @@ public class NodeShow : MonoBehaviour {
     {
         GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         gameObject.AddComponent<Transform>();
-        gameObject.name = "node" + Node.name;
+        gameObject.name = Node.name+"@"+ Node.value.ToString();
+        gameObject.transform.SetParent(groupContainer, false);
         return gameObject;
     }
    
@@ -146,6 +147,7 @@ public class NodeShow : MonoBehaviour {
         GameObject barGameObject = CreateBar(graphPosition, Width, barHight,barZStation,a, i);
         BarChartVisualObject barChartVisualObject = new BarChartVisualObject(barGameObject, Width, barHight,barZStation);
         barChartVisualObject.SetGraphVisualObjectInfo(graphPosition, Width, barHight,barZStation,tooltipText);
+        Mouse barButtonUI = barGameObject.AddComponent<Mouse>();
         return new List<GameObject>() { barGameObject };
     }
 
@@ -158,7 +160,7 @@ public class NodeShow : MonoBehaviour {
 
         GameObject lineobject = new GameObject("line");
         lineobject.AddComponent<LineRenderer>();
-        lineobject.transform.SetParent(graphContainer, false);
+       // lineobject.transform.SetParent(groupContainer, false);
         LineRenderer line = lineobject.GetComponent<LineRenderer>();
         line.alignment = LineAlignment.TransformZ;
         line.sortingOrder = -9;

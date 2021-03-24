@@ -70,6 +70,7 @@ public class NodeShow : MonoBehaviour {
     {
         GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         gameObject.AddComponent<Transform>();
+      
         gameObject.name = Node.name+"@"+ Node.value.ToString();
         gameObject.transform.SetParent(groupContainer, false);
         return gameObject;

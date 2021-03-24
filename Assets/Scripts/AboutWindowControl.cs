@@ -11,14 +11,11 @@ public class AboutWindowControl : MonoBehaviour
     void Start()
     {
         helppanel.SetActive(false);
-    }
+    }     
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    /** 
+     * button click action listener 
+     */
     public void Click()
     {
         if(choice == false)
@@ -28,7 +25,6 @@ public class AboutWindowControl : MonoBehaviour
         }
         else
         {
-            Debug.Log("......false");
             helppanel.SetActive(false);
             choice = false;
         }

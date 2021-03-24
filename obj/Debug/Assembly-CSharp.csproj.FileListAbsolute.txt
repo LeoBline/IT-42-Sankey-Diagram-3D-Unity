@@ -342,3 +342,7 @@
 /Users/zhuhongcong/Desktop/IT-42-Sankey-3D/obj/Debug/Assembly-CSharp.csproj.CopyComplete
 /Users/zhuhongcong/Desktop/IT-42-Sankey-3D/obj/Debug/Assembly-CSharp.dll
 /Users/zhuhongcong/Desktop/IT-42-Sankey-3D/obj/Debug/Assembly-CSharp.pdb
+E:\IT 2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+E:\IT 2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+E:\IT 2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.dll
+E:\IT 2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.pdb

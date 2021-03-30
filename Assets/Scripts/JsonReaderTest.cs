@@ -169,7 +169,7 @@ public class JsonReaderTest : MonoBehaviour
     [Space(30)]
     public UnityEngine.Object jsFile;
     int links ;
-   public int iterations = 15;
+   public int iterations = 25;
 
     public enum aligns {justify, left, right, center };
 

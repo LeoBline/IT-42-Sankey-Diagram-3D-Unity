@@ -503,9 +503,11 @@ MonoBehaviour:
   dotSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
   JsonReaderObject: {fileID: 1861260117}
   textlist: []
+  splitCount: 15
   LineReadererPointsCount: 200
   PositionScale: 1
   RatioHighAndArea: 16
+  linkMaterial: {fileID: 2100000, guid: 9edef8fe1f355184ca5515a1770d156e, type: 2}
   textFontSize: 16
   lineAlpha: 0.181
   continulFlag: 0

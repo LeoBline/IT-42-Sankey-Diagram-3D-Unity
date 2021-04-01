@@ -508,12 +508,58 @@ MonoBehaviour:
   PositionScale: 1
   RatioHighAndArea: 16
   linkMaterial: {fileID: 2100000, guid: 9edef8fe1f355184ca5515a1770d156e, type: 2}
+  Bio: {fileID: 2100000, guid: 33dcf16f67c1a461ba06411778cfd076, type: 2}
+  Elec: {fileID: 2100000, guid: e4a5882b1026445859117e914506ea07, type: 2}
+  Hy: {fileID: 2100000, guid: 6c2bcb0d13c2947a3b0b9dca7c3ae21a, type: 2}
+  Coal: {fileID: 2100000, guid: a6f148e717c5d43bb8d709b5015ce4cc, type: 2}
+  Solar: {fileID: 2100000, guid: cd8e8d80ffe5b4a4c86bd8ba97e1ae81, type: 2}
+  Oil: {fileID: 2100000, guid: abdf25cb56bc34a94a1553518678bd95, type: 2}
+  others: {fileID: 2100000, guid: 242ff2a9a63b1414f84e1e4e209d75a9, type: 2}
   textFontSize: 16
   lineAlpha: 0.181
   continulFlag: 0
   dragFlag: 0
   reloadFlag: 0
   dragNode: 
+  stringToEdit: 'Hello World
+
+    I''ve got 2 lines...'
+--- !u!114 &69425009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69425002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c71cab6eb0dd4a51881a2ed66a03c56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dotSprite: {fileID: 0}
+  JsonReaderObject: {fileID: 0}
+  textlist: []
+  splitCount: 15
+  LineReadererPointsCount: 200
+  PositionScale: 0.25
+  RatioHighAndArea: 64
+  linkMaterial: {fileID: 2100000, guid: 242ff2a9a63b1414f84e1e4e209d75a9, type: 2}
+  Bio: {fileID: 2100000, guid: 33dcf16f67c1a461ba06411778cfd076, type: 2}
+  Elec: {fileID: 2100000, guid: e4a5882b1026445859117e914506ea07, type: 2}
+  Hy: {fileID: 2100000, guid: 6c2bcb0d13c2947a3b0b9dca7c3ae21a, type: 2}
+  Coal: {fileID: 2100000, guid: a6f148e717c5d43bb8d709b5015ce4cc, type: 2}
+  Solar: {fileID: 2100000, guid: cd8e8d80ffe5b4a4c86bd8ba97e1ae81, type: 2}
+  Oil: {fileID: 2100000, guid: abdf25cb56bc34a94a1553518678bd95, type: 2}
+  others: {fileID: 2100000, guid: 242ff2a9a63b1414f84e1e4e209d75a9, type: 2}
+  textFontSize: 10
+  lineAlpha: 0.69
+  continulFlag: 0
+  dragFlag: 0
+  reloadFlag: 0
+  dragNode: 
+  stringToEdit: 'Hello World
+
+    I''ve got 2 lines...'
 --- !u!1 &186074295
 GameObject:
   m_ObjectHideFlags: 0

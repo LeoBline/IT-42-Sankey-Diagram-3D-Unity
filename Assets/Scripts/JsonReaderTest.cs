@@ -22,10 +22,13 @@ public class NodesItem
 public class NodesStructure
 {
     public string name { get; set; }
+    //x0:
     public double x0 { get; set; }
-
+    //x1:
     public double x1 { get; set; }
+    //y0:
     public double y0 { get; set; }
+    //y1:
     public double y1 { get; set; }
 
     public int index { get; set; }
@@ -361,7 +364,7 @@ public class JsonReaderTest : MonoBehaviour
     public void ComputeNodeBreadths()
     {
         ColumnNodes[] columns = computeNodeLayers();
-        Debug.Log("Input Value:" + columns[0].Columnnode.Sum(c=>c.value)+"  Output Value: "+columns[columns.Length-1].Columnnode.Sum(b => b.value));
+        //Debug.Log("Input Value:" + columns[0].Columnnode.Sum(c=>c.value)+"  Output Value: "+columns[columns.Length-1].Columnnode.Sum(b => b.value));
         int max1 = columns.Max(c=>c.Columnnode.Count);
         py = Math.Min(nodePadding, (y1 - y0) / (max1 - 1));
         initializeNodeBreadths(columns);
@@ -614,7 +617,7 @@ public class JsonReaderTest : MonoBehaviour
             }
             if (++x > NodesStructures.Length)
             {
-                Debug.Log("ERROR  x>n");
+                //Debug.Log("ERROR  x>n");
             }
             current = next;
             next = new List<NodesStructure>();
@@ -668,7 +671,7 @@ public class JsonReaderTest : MonoBehaviour
                 }
             }
             if (++x > NodesStructures.Length) {
-                Debug.Log("ERROR  x>n"); 
+                //Debug.Log("ERROR  x>n"); 
             }
             current = next;
             next = new List<NodesStructure>();
@@ -703,7 +706,7 @@ public class JsonReaderTest : MonoBehaviour
                     temp = left(a);
                     break;
                 default:
-                    Debug.Log("ERROR Align");
+                    //Debug.Log("ERROR Align");
                     break;
                     
             }

@@ -4198,6 +4198,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera
       objectReference: {fileID: 0}
+    - target: {fileID: 794903884559047300, guid: cf4830d0d9e323647b8f1d9d69e068ed, type: 3}
+      propertyPath: m_TagString
+      value: MainCamera
+      objectReference: {fileID: 0}
     - target: {fileID: 794903884559047301, guid: cf4830d0d9e323647b8f1d9d69e068ed, type: 3}
       propertyPath: m_ClearFlags
       value: 1

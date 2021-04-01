@@ -57,6 +57,7 @@ public class DrawLine : MonoBehaviour
     private void DrawLinearCurve(Vector2 position1,Vector2 position2,Vector2 position3,Vector2 position4,float width)
     {
         lineReaderer.SetWidth(width,width);
+        //the style of line
         lineReaderer.material= new Material(Shader.Find("Sprites/Default"));
         lineReaderer.material.SetColor("_TintColor", new Color(0, 0, 0, 0.3f));
         for(int i =0;i<numPoints+1; i++)

@@ -42,6 +42,8 @@ public class NodeShow : MonoBehaviour
     public String dragNode;
     public string stringToEdit = "Hello World\nI've got 2 lines...";
     private double updateTime = 0;
+    private NodesStructure[] nodesStructures;
+    private LinksStructure[] linksStructures;
     // Start is called before the first frame update
     void Start()
     {
@@ -49,8 +51,8 @@ public class NodeShow : MonoBehaviour
         ////设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
         //obj1.transform.position = new Vector3(1, 1, 1);
         //obj1.transform.localScale = new Vector3(500,2,500);
-        NodesStructure[] nodesStructures = JsonReaderObject.GetComponent<JsonReaderTest>().NodesStructures;
-        LinksStructure[] linksStructures = JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures;
+        nodesStructures = JsonReaderObject.GetComponent<JsonReaderTest>().NodesStructures;
+        linksStructures = JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures;
         barlist = new GameObject[nodesStructures.Length];
         linklist = new GameObject[JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures.Length];
         instance = this;
@@ -101,7 +103,8 @@ public class NodeShow : MonoBehaviour
         }
         gameObject.name = Node.name + "@" + Node.value.ToString();
         gameObject.transform.SetParent(groupContainer, false);
-        gameObject.AddComponent<Text>().text = Node.name;
+        gameObject.AddComponent<Text>().text =Node.name ;
+        gameObject.AddComponent<DragNode3D>();
 
         return gameObject;
     }
@@ -111,31 +114,35 @@ public class NodeShow : MonoBehaviour
         stringToEdit = GUI.TextArea(new Rect(10, 400, 200, 100), stringToEdit, 200);
     }
 
-    Texture2D GenerateTexture(float barWidth, float barHight, float BarZ)
-    {
-        // 创建一个 128*128 的二维纹理
-        var texture = new Texture2D(128, 128, TextureFormat.ARGB32, false);
 
-        // 定义一个颜色数组
-        var colors = new Color[(int)(barWidth) * (int)(barHight)];
-        for (int i = 0; i < colors.Length; ++i)
-        {
-            colors[i] = RandomColor1();
-        }
+    //LAST STAGE
+    //Texture2D GenerateTexture(float barWidth, float barHight, float BarZ)
+    //{
+    //    // 创建一个 128*128 的二维纹理
+    //    var texture = new Texture2D(128, 128, TextureFormat.ARGB32, false);
 
-        // 在纹理左下角 32*32 的范围绘制一块黑色区域
-        texture.SetPixels(0, 0, 31, 31, colors);
+    //    // 定义一个颜色数组
+    //    var colors = new Color[(int)(barWidth) * (int)(barHight)];
+    //    for (int i = 0; i < colors.Length; ++i)
+    //    {
+    //        colors[i] = RandomColor1();
+    //    }
 
-        // Apply 使设置生效
-        texture.Apply(false, false);
-        return texture;
-    }
+    //    // 在纹理左下角 32*32 的范围绘制一块黑色区域
+    //    texture.SetPixels(0, 0, 31, 31, colors);
+
+    //    // Apply 使设置生效
+    //    texture.Apply(false, false);
+    //    return texture;
+    //}
 
 
     private void showGraph(NodesStructure[] nodesStructures, LinksStructure[] links)
     {
         for (int i = 0; i < nodesStructures.Length; i++)
         {
+
+            //float xPosition = 0.0f;
             float xPosition = (float)nodesStructures[i].x0;
 
             float yPosition = (float)nodesStructures[i].y0;
@@ -164,6 +171,23 @@ public class NodeShow : MonoBehaviour
         }
 
 
+    }
+
+
+    private void Update()
+    {
+        if(GameLineObjectList != null)
+        {
+            foreach (GameObject line in GameLineObjectList)
+            {
+                Destroy(line);
+            }
+            for (int i = 0; i < linksStructures.Length; i++)
+            {
+                GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
+            }
+        }
+        
     }
     private interface IGraphVisual
     {
@@ -215,7 +239,6 @@ public class NodeShow : MonoBehaviour
 
     private GameObject CreateLink(LinksStructure link)
     {
-
         GameObject lineobject = new GameObject("line");
         MeshFilter meshFilter = lineobject.AddComponent<MeshFilter>();
         lineobject.AddComponent<MeshRenderer>();
@@ -231,27 +254,44 @@ public class NodeShow : MonoBehaviour
         line.motionVectors = false;
         line.material = new Material(Shader.Find("Sprites/Default"));
         line.SetColors(new Color(1, 1, 1, lineAlpha), new Color(1, 1, 1, lineAlpha));
-        float y0_3D = (float)link.y0_3D + (float)link.width / 2;
-        float y1_3D = (float)link.y1_3D + (float)link.width / 2;
+        string SourceNodeName = link.SourceNode.name + "@" + link.SourceNode.value;
+        GameObject SourceNode = GameObject.Find(SourceNodeName);
+        float y0_3D = SourceNode.transform.position.y + (float)link.width/2;
+        //float y0_3D = (float)link.y0_3D + (float)link.width / 2;
+        string TargetNodeName = link.TargetNode.name + "@" + link.TargetNode.value;
+        GameObject TargetNode = GameObject.Find(TargetNodeName);
+        float y1_3D = TargetNode.transform.position.y + (float)link.width / 2;
+        //float y1_3D = (float)link.y1_3D + (float)link.width / 2;
         float width = (float)link.width;
-        float z0 = (float)(link.SourceNode.y0 + ((float)link.SourceNode.y1 - (float)link.SourceNode.y0) / 2) * PositionScale - 10 / 2;
-        float x0 = (float)(link.SourceNode.x0 + ((float)link.SourceNode.x1 - (float)link.SourceNode.x0) / 2) * PositionScale + 10 / 2;
-        float z1 = (float)(link.TargetNode.y0 + ((float)link.TargetNode.y1 - (float)link.TargetNode.y0) / 2) * PositionScale - 10 / 2;
-        float x1 = (float)(link.TargetNode.x0 + ((float)link.TargetNode.x1 - (float)link.TargetNode.x0) / 2) * PositionScale - 10 / 2;
-        Debug.Log("x0" + x0 + "y0" + y0_3D + "z0" + z0 + "x1" + x1 + "y1" + y1_3D + "z1" + z1);
+
+        float z0 = (float)(SourceNode.transform.position.z) * PositionScale - 10 / 2;
+
+        float x0 = (float)(SourceNode.transform.position.x) * PositionScale + 10 / 2;
+        float z1 = (float)(TargetNode.transform.position.z) * PositionScale - 10 / 2;
+        float x1 = (float)(TargetNode.transform.position.x) * PositionScale - 10 / 2;
+
+
+        //float z0 = (float)(link.SourceNode.y0 + ((float)link.SourceNode.y1 - (float)link.SourceNode.y0) / 2) * PositionScale - 10 / 2;
+        
+        //float x0 = (float)(link.SourceNode.x0 + ((float)link.SourceNode.x1 - (float)link.SourceNode.x0) / 2) * PositionScale + 10 / 2;
+        //float z1 = (float)(link.TargetNode.y0 + ((float)link.TargetNode.y1 - (float)link.TargetNode.y0) / 2) * PositionScale - 10 / 2;
+        //float x1 = (float)(link.TargetNode.x0 + ((float)link.TargetNode.x1 - (float)link.TargetNode.x0) / 2) * PositionScale - 10 / 2;
+        //Debug.Log("x0" + x0 + "y0" + y0_3D + "z0" + z0 + "x1" + x1 + "y1" + y1_3D + "z1" + z1);
+        //n1 is left vector
         Vector3 n1 = new Vector3(x0, y0_3D, z0);
         Vector3 n2 = new Vector3((x0 + x1) / 2, y0_3D, (z0 + z1) / 2);
+        //n4 is right vector
         Vector3 n3 = new Vector3((x0 + x1) / 2, y1_3D, (z0 + z1) / 2);
         Vector3 n4 = new Vector3(x1, y1_3D, z1);
         //future need to change the node width
         DrawLinearCurve(meshFilter, line, n1, n2, n3, n4, width, 10, 10);
         return lineobject;
 
-
-
     }
 
+    
 
+    //Draw the Bizare curve of Link
     private void DrawLinearCurve(MeshFilter lineobject, LineRenderer lineRenderer, Vector3 position1, Vector3 position2, Vector3 position3, Vector3 position4, float width, float LDepth, float RDepth)
     {
         List<Vector3> curveDataList = new List<Vector3>();
@@ -343,7 +383,7 @@ public class NodeShow : MonoBehaviour
         // Indices Setup
         int numTris = numPoints - 2 - 2;
         int[] indices = new int[numTris * 3];
-        Debug.Log(curveDataList.Count);
+        //Debug.Log(curveDataList.Count);
 
         for (int i = 0; i < curveDataList.Count - 1; i++)
         {

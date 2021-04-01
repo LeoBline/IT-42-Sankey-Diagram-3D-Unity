@@ -77,7 +77,7 @@ public class DragNode : MonoBehaviour, IDragHandler
         a.y1 = y;
         a.x1 = x;
 
-        Debug.Log(a.x0 + " " + a.x1 + " " + a.y0 + " " + a.y1);
+        //Debug.Log(a.x0 + " " + a.x1 + " " + a.y0 + " " + a.y1);
         nodeshow.GetComponent<NodeShow>().dragFlag = true;
         nodeshow.GetComponent<NodeShow>().dragNode = this.name.Substring(5);
     }

@@ -51,6 +51,8 @@ public class NodeShow : MonoBehaviour
         ////设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
         //obj1.transform.position = new Vector3(1, 1, 1);
         //obj1.transform.localScale = new Vector3(500,2,500);
+        AddTag("Cube", gameObject);
+        AddTag("Link", gameObject);
         nodesStructures = JsonReaderObject.GetComponent<JsonReaderTest>().NodesStructures;
         linksStructures = JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures;
         barlist = new GameObject[nodesStructures.Length];
@@ -62,6 +64,34 @@ public class NodeShow : MonoBehaviour
         showGraph(nodesStructures, linksStructures);
     }
 
+    #region addtag
+    void AddTag(string tag, GameObject obj)
+    {
+        if (!isHasTag(tag))
+        {
+            SerializedObject tagManager = new SerializedObject(obj);//序列化物体
+            SerializedProperty it = tagManager.GetIterator();//序列化属性
+            while (it.NextVisible(true))//下一属性的可见性
+            {
+                if (it.name == "m_TagString")
+                {
+                    Debug.Log(it.stringValue);
+                    it.stringValue = tag;
+                    tagManager.ApplyModifiedProperties();
+                }
+            }
+        }
+    }
+    bool isHasTag(string tag)
+    {
+        for (int i = 0; i < UnityEditorInternal.InternalEditorUtility.tags.Length; i++)
+        {
+            if (UnityEditorInternal.InternalEditorUtility.tags[i].Equals(tag))
+                return true;
+        }
+        return false;
+    }
+    #endregion
 
     public Color RandomColor1()
     {
@@ -102,9 +132,11 @@ public class NodeShow : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().material = others;
         }
         gameObject.name = Node.name + "@" + Node.value.ToString();
+        gameObject.transform.tag = "Cube";
         gameObject.transform.SetParent(groupContainer, false);
         gameObject.AddComponent<Text>().text =Node.name ;
         gameObject.AddComponent<DragNode3D>();
+        gameObject.AddComponent<ClearlyShow>();
 
         return gameObject;
     }
@@ -158,10 +190,6 @@ public class NodeShow : MonoBehaviour
             //float areaHigh = areaWidth * (float)Math.Pow(RatioHighAndArea, 0.5);
             //barHight = areaWidth * RatioHighAndArea;
             //areaWidth = areaHigh;
-
-
-
-
             GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition * PositionScale, barHight / 2, yPosition * PositionScale), 10, barHight, 10, "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
         }
         for (int i = 0; i < links.Length; i++)
@@ -246,8 +274,17 @@ public class NodeShow : MonoBehaviour
         // lineobject.transform.SetParent(groupContainer, false);
         LineRenderer line = lineobject.GetComponent<LineRenderer>();
         Color color = new Color(1, 1, 1, lineAlpha);
-        lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
-        lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        //Debug.Log(ClearlyShow.showLink);
+        if (ClearlyShow.showLink)
+        {
+            lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
+            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        }
+        else
+        {
+            lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
+            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.1f);
+        }
         line.alignment = LineAlignment.TransformZ;
         line.sortingOrder = -9;
         line.useWorldSpace = false;
@@ -285,6 +322,13 @@ public class NodeShow : MonoBehaviour
         Vector3 n4 = new Vector3(x1, y1_3D, z1);
         //future need to change the node width
         DrawLinearCurve(meshFilter, line, n1, n2, n3, n4, width, 10, 10);
+        lineobject.name = SourceNode.name + "&" + TargetNode.name;
+        lineobject.transform.tag = "Link";
+        if (lineobject.name.ToString().Equals(ClearlyShow.showLinkName))
+        {
+            lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
+            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        }
         return lineobject;
 
     }

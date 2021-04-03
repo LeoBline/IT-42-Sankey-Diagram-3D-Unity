@@ -18,12 +18,11 @@ public class ClearlyShow : MonoBehaviour
     public Material Solar;
     public Material Oil;
     public Material others;
+    private GameObject lastNode;
     public static string showLinkName = "";
     public static string lastNodeName = "";
     public void Start()
     {
-        //UnityEngine.Object obj = AssetDatabase.LoadMainAssetAtPath("Assets/test.mat");
-        //Material mat = obj as Material;
         UnityEngine.Object obj1 = AssetDatabase.LoadAllAssetsAtPath("Assets/image/BioMaterial.mat")[0];
         Bio = obj1 as Material;
         UnityEngine.Object obj2 = AssetDatabase.LoadAllAssetsAtPath("Assets/image/ElecMaterial.mat")[0];
@@ -39,86 +38,137 @@ public class ClearlyShow : MonoBehaviour
         UnityEngine.Object obj7 = AssetDatabase.LoadAllAssetsAtPath("Assets/image/OtherMaterial.mat")[0];
         others = obj7 as Material;
     }
+    //private void Update()
+    //{
+    //    if (ButtonBeauty.hoverOrdrag == false)
+    //    {
+    //        Recover();
+    //    }
+    //}
+
+    public void Click()
+    {
+        if(ButtonBeauty.hoverOrdrag == false)
+        {
+            Recover();
+        }
+    }
+
+    private void Recover()
+    {
+        showLink = true;
+        List<GameObject> CubeArray = getCube();
+        foreach (GameObject gb in CubeArray)
+        {
+            Debug.Log("--------------------------------");
+            ////set the cube to the orignal material
+            if (gb.name.Contains("Coal"))
+            {
+                gb.GetComponent<MeshRenderer>().material = Coal;
+            }
+            else if (gb.name.Contains("H") || gb.name.Contains("Gas") || gb.name.Contains("Wind"))
+            {
+                gb.GetComponent<MeshRenderer>().material = Hy;
+            }
+            else if (gb.name.Contains("Solar"))
+            {
+                gb.GetComponent<MeshRenderer>().material = Solar;
+            }
+            else if (gb.name.Contains("Oil"))
+            {
+                gb.GetComponent<MeshRenderer>().material = Oil;
+            }
+            else if (gb.name.Contains("Elec"))
+            {
+                gb.GetComponent<MeshRenderer>().material = Elec;
+            }
+            else
+            {
+                gb.GetComponent<MeshRenderer>().material = others;
+            }
+        }
+
+    }
     //当鼠标悬停时两个node和一个link高亮并且抬高显示
     public void OnMouseOver()
     {
-        if(lastNodeName == "" || lastNodeName.Equals(gameObject.name.ToString()) == false)
+        if (ButtonBeauty.hoverOrdrag)
         {
-            Debug.Log("comprision: "+lastNodeName.Equals(""));
-            if(lastNodeName.Equals(gameObject.name.ToString()) == false && lastNodeName!="")
+            if (lastNodeName == "" || lastNodeName.Equals(gameObject.name.ToString()) == false)
             {
-                Debug.Log("changechange");
-                GameObject lastNode = GameObject.Find(lastNodeName);
-                DownTheNode(lastNode);
-            }
-            showLink = false;
-            float OrdXCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).x;
-            float OrdYCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).y;
-            float OrdZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-            Debug.Log(gameObject.tag.ToString());
-            if (gameObject.tag.ToString() == "Cube")
-            {
-                gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(OrdXCoord, OrdYCoord + 100, OrdZCoord));
-                string NodeObjectName = gameObject.name;
-                
-                lastNodeName = NodeObjectName;
-                Debug.Log("LastNodeName" + lastNodeName);
-                string NodeName = NodeObjectName.Split('@')[0];
-                List<GameObject> LinkArray = getLink();
-                string targetNodeName = "";
-                //up link
-                foreach (GameObject gb in LinkArray)
+                Debug.Log("comprision: " + lastNodeName.Equals(""));
+                if (lastNodeName.Equals(gameObject.name.ToString()) == false && lastNodeName != "")
                 {
-                    //Debug.Log("====================================================");
-                    if (gb.name.ToString().Split('@')[0].Equals(NodeName))
-                    {
-                        showLinkName = gb.name.ToString();
-                        float linkOrdXCoord = Camera.main.WorldToScreenPoint(gb.transform.position).x;
-                        float linkOrdYCoord = Camera.main.WorldToScreenPoint(gb.transform.position).y;
-                        float linkOrdZCoord = Camera.main.WorldToScreenPoint(gb.transform.position).z;
-                        gb.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(linkOrdXCoord, linkOrdYCoord + 100, linkOrdZCoord));
-                        int nameLength = gb.name.ToString().Split('@').Length;
-                        string temptargetNodeName = gb.name.ToString().Split('@')[nameLength - 2];
-                        targetNodeName = temptargetNodeName.Split('&')[1];
-                        
-                        //Debug.Log(targetNodeName);
-                    }
-
+                    Debug.Log("changechange");
+                    lastNode = GameObject.Find(lastNodeName);
+                    DownTheNode(lastNode);
                 }
-                //up node
-                List<GameObject> CubeArray = getCube();
-                foreach (GameObject gb in CubeArray)
+                showLink = false;
+                float OrdXCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).x;
+                float OrdYCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).y;
+                float OrdZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+                Debug.Log(gameObject.tag.ToString());
+                if (gameObject.tag.ToString() == "Cube")
                 {
+                    gameObject.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(OrdXCoord, OrdYCoord + 100, OrdZCoord));
+                    string NodeObjectName = gameObject.name;
 
-                    string targetName = gb.name.ToString().Split('@')[0];
-                    // Debug.Log(targetName);
-                    if (targetName.Equals(targetNodeName))
+                    lastNodeName = NodeObjectName;
+                    Debug.Log("LastNodeName" + lastNodeName);
+                    string NodeName = NodeObjectName.Split('@')[0];
+                    List<GameObject> LinkArray = getLink();
+                    string targetNodeName = "";
+                    //up link
+                    foreach (GameObject gb in LinkArray)
                     {
-                        //Debug.Log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=");
-                        float CubeOrdXCoord = Camera.main.WorldToScreenPoint(gb.transform.position).x;
-                        float CubeOrdYCoord = Camera.main.WorldToScreenPoint(gb.transform.position).y;
-                        float CubeOrdZCoord = Camera.main.WorldToScreenPoint(gb.transform.position).z;
-                        gb.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(CubeOrdXCoord, CubeOrdYCoord + 100, CubeOrdZCoord));
-                    }
-                    else
-                    {
-                        //set the other cube be transparet
-                        Debug.Log("--------------------------------");
-                        Debug.Log("gbName: " + gb.name.ToString());
-                        Debug.Log("NodeName: " + NodeName);
-                        if (gb.name.ToString().Equals(NodeObjectName) == false)
+                        //Debug.Log("====================================================");
+                        if (gb.name.ToString().Split('@')[0].Equals(NodeName))
                         {
-                            Material material = new Material(Shader.Find("Transparent/Diffuse"));
-                            material.color = new Color(1 / 255f, 1 / 255f, 1 / 255f, 10 / 255f);
-                            gb.GetComponent<Renderer>().material = material;
+                            showLinkName = gb.name.ToString();
+                            float linkOrdXCoord = Camera.main.WorldToScreenPoint(gb.transform.position).x;
+                            float linkOrdYCoord = Camera.main.WorldToScreenPoint(gb.transform.position).y;
+                            float linkOrdZCoord = Camera.main.WorldToScreenPoint(gb.transform.position).z;
+                            gb.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(linkOrdXCoord, linkOrdYCoord + 100, linkOrdZCoord));
+                            int nameLength = gb.name.ToString().Split('@').Length;
+                            string temptargetNodeName = gb.name.ToString().Split('@')[nameLength - 2];
+                            targetNodeName = temptargetNodeName.Split('&')[1];
+
+                            //Debug.Log(targetNodeName);
+                        }
+
+                    }
+                    //up node
+                    List<GameObject> CubeArray = getCube();
+                    foreach (GameObject gb in CubeArray)
+                    {
+
+                        string targetName = gb.name.ToString().Split('@')[0];
+                        // Debug.Log(targetName);
+                        if (targetName.Equals(targetNodeName))
+                        {
+                            //Debug.Log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=");
+                            float CubeOrdXCoord = Camera.main.WorldToScreenPoint(gb.transform.position).x;
+                            float CubeOrdYCoord = Camera.main.WorldToScreenPoint(gb.transform.position).y;
+                            float CubeOrdZCoord = Camera.main.WorldToScreenPoint(gb.transform.position).z;
+                            gb.transform.position = Camera.main.ScreenToWorldPoint(new Vector3(CubeOrdXCoord, CubeOrdYCoord + 100, CubeOrdZCoord));
+                        }
+                        else
+                        {
+                            //set the other cube be transparet
+                            Debug.Log("--------------------------------");
+                            Debug.Log("gbName: " + gb.name.ToString());
+                            Debug.Log("NodeName: " + NodeName);
+                            if (gb.name.ToString().Equals(NodeObjectName) == false)
+                            {
+                                Material material = new Material(Shader.Find("Transparent/Diffuse"));
+                                material.color = new Color(1 / 255f, 1 / 255f, 1 / 255f, 10 / 255f);
+                                gb.GetComponent<Renderer>().material = material;
+                            }
                         }
                     }
                 }
-
-
             }
         }
-        
     }
 
     private List<GameObject> getLink()

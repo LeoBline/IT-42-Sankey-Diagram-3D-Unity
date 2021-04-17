@@ -71,7 +71,6 @@
     <Compile Include="Assets\Scripts\HtmlJsonAddressInputFiled.cs" />
     <Compile Include="Assets\Scripts\ClearlyShow.cs" />
     <Compile Include="Assets\Scripts\CameraController.cs" />
-    <Compile Include="Assets\Scripts\preset.cs" />
     <Compile Include="Assets\Scripts\HtmlJsonButton.cs" />
     <Compile Include="Assets\Scripts\NewMesh.cs" />
     <Compile Include="Assets\Scripts\PlayerController.cs" />

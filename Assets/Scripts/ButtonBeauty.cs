@@ -7,6 +7,7 @@ public class ButtonBeauty : MonoBehaviour
 {
     public GameObject panel;
     public GameObject buttonObj;
+    public static bool hoverFunction = false;
     //true: hover
     //false: drag
     public static bool hoverOrdrag = true;
@@ -33,6 +34,11 @@ public class ButtonBeauty : MonoBehaviour
                 //become drag from hover function
                 hoverOrdrag = false;
             }
+            if (gameObject.transform.name.ToString().Equals("HoverButton"))
+            {
+                //become drag from hover function
+                hoverFunction = true;
+            }
             choice = true;
         }
         else
@@ -44,6 +50,11 @@ public class ButtonBeauty : MonoBehaviour
             {
                 //become hover;
                 hoverOrdrag = true;
+            }
+            if (gameObject.transform.name.ToString().Equals("HoverButton"))
+            {
+                //become drag from hover function
+                hoverFunction = false;
             }
             choice = false;
         }

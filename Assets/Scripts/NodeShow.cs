@@ -17,7 +17,7 @@ public class NodeShow : MonoBehaviour
     public int LineReadererPointsCount = 200;
     public float PositionScale = 0.25f;
     public float RatioHighAndArea = 64;
-    public Material linkMaterial;
+    public static Material linkMaterial;
     private static NodeShow instance;
     private GameObject tooltipGameObject;
     private List<GameObject> GameObjectList;
@@ -227,8 +227,9 @@ public class NodeShow : MonoBehaviour
 
     private void Update()
     {
-        if (DragNode3D.isClick == true)
+        if (DragNode3D.isClick == true || ClearlyShow.hover == true)
         {
+          
             if (GameLineObjectList != null)
             {
                 foreach (GameObject line in GameLineObjectList)
@@ -240,10 +241,26 @@ public class NodeShow : MonoBehaviour
                     GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
                 }
             }
+            if(ClearlyShow.hover == true)
+            {
+                
+                Debug.Log("LInkList number: "+ClearlyShow.linkList.Count);
+                for(int i = 0; i < ClearlyShow.linkList.Count; i++)
+                {
+                    Debug.Log("11111"+ ClearlyShow.linkList[i]);
+                    GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(58 / 255f, 95 / 255f, 205 / 255f, 255 / 255f);
+                }
+            }
+            if (ClearlyShow.hover == true)
+            {
+                ClearlyShow.hover = false;
+            }
         }
+
         
     }
 
+    
     
     private interface IGraphVisual
     {

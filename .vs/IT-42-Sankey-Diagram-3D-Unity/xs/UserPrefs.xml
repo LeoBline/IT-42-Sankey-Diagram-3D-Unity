@@ -1,13 +1,20 @@
-﻿<Properties>
+﻿<Properties StartupConfiguration="{B8374293-16A3-8539-BD35-636A7E8CA77E}|">
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NodeShow.cs">
     <Files>
-      <File FileName="Assets/Scripts/NodeShow.cs" Line="360" Column="11" />
-      <File FileName="Assets/Scripts/Mouse.cs" />
+      <File FileName="Assets/Scripts/NodeShow.cs" Line="42" Column="4" />
+      <File FileName="Assets/Scripts/AboutWindowControl.cs" Line="31" Column="6" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="IT-42-Sankey-Diagram-3D-Unity" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="56678bbc-62d7-4c9e-bf6a-535f21a1a199" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="b767ffd4-9e1e-46d6-a5af-32ccb59879b5" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

@@ -53,15 +53,37 @@ public class NodeShow : MonoBehaviour
         //obj1.transform.localScale = new Vector3(500,2,500);
         AddTag("Cube", gameObject);
         AddTag("Link", gameObject);
+      
         nodesStructures = JsonReaderObject.GetComponent<JsonReaderTest>().NodesStructures;
         linksStructures = JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures;
+        instance = this;
         barlist = new GameObject[nodesStructures.Length];
         linklist = new GameObject[JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures.Length];
-        instance = this;
         groupContainer = transform.GetComponent<RectTransform>();
         GameObjectList = new List<GameObject>();
         GameLineObjectList = new List<GameObject>();
         showGraph(nodesStructures, linksStructures);
+        transform.Find("Left").GetComponent<Button_UI>().ClickFunc = () =>
+        {
+            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.left;
+            JsonReaderObject.SetActive(true);
+            continulFlag = true;
+            Update();
+        };
+        transform.Find("Right").GetComponent<Button_UI>().ClickFunc = () =>
+        {
+            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
+            JsonReaderObject.SetActive(true);
+            continulFlag = true;
+            Update();
+        };
+        transform.Find("Center").GetComponent<Button_UI>().ClickFunc = () =>
+        {
+            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.center;
+            JsonReaderObject.SetActive(true);
+            continulFlag = true;
+            Update();
+        };
     }
 
     #region addtag
@@ -183,6 +205,7 @@ public class NodeShow : MonoBehaviour
             float barHight = (float)nodesStructures[i].y1 - yPosition;
             string Value = nodesStructures[i].value.ToString();
             string name = nodesStructures[i].name;
+
             yPosition += barHight / 2;
             xPosition += Width / 2;
             //float ZPosition = (float)Math.Pow(Convert.ToDouble(barHight / 4), Convert.ToDouble(1) / 3);

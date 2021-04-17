@@ -1,13 +1,13 @@
-﻿<Properties StartupConfiguration="{B8374293-16A3-8539-BD35-636A7E8CA77E}|">
+﻿<Properties>
   <MonoDevelop.Ide.Workbench ActiveDocument="Assets/Scripts/NodeShow.cs">
     <Files>
-      <File FileName="Assets/Scripts/NodeShow.cs" Line="19" Column="40" />
+      <File FileName="Assets/Scripts/NodeShow.cs" Line="360" Column="11" />
       <File FileName="Assets/Scripts/Mouse.cs" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="2de5dafa-1cca-42ea-a1af-fff5670c73e3" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="56678bbc-62d7-4c9e-bf6a-535f21a1a199" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>

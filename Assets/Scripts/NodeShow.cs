@@ -189,8 +189,8 @@ public class NodeShow : MonoBehaviour
             //float areaWidth = (float)Math.Pow(barHight, 0.3333);
             //float areaHigh = areaWidth * (float)Math.Pow(RatioHighAndArea, 0.5);
             //barHight = areaWidth * RatioHighAndArea;
-            //areaWidth = areaHigh;
-            GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition * PositionScale, barHight / 2, yPosition * PositionScale), 10, barHight, 10, "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
+            //areaWidth = areaHigh;,
+            GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition , barHight / 2, yPosition),10 , barHight, getMinLength(nodesStructures), "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
         }
         for (int i = 0; i < links.Length; i++)
         {
@@ -261,7 +261,7 @@ public class NodeShow : MonoBehaviour
         return new List<GameObject>() { barGameObject };
     }
 
-
+    
 
 
 
@@ -333,7 +333,72 @@ public class NodeShow : MonoBehaviour
 
     }
 
-    
+    private float getMinLength(NodesStructure[] nodes)
+    {
+        int max = 0;
+      for(int i = 0; i < nodes.Length; i++)
+        {
+           if(max < nodes[i].layer)
+            {
+               max = nodes[i].layer;
+            }
+        }
+     
+      int[]  ay = new int[max];
+       for(int m = 0; m < max; m++)
+        {
+            int number = 0;
+            for (int i = 0; i < nodes.Length; i++)
+            {
+                if (nodes[i].layer == m)
+                {
+                    number += 1;
+                }
+
+            }
+            ay[m] = number;
+          
+        }
+        int m1 = 0;
+        int index = 0;
+       for(int y = 0; y < ay.Length; y++)
+        {
+            if(ay[y] > m1)
+            {
+                m1 = ay[y];
+                index = y;
+            }
+        }
+        Debug.Log("index" + index);
+        List<NodesStructure> node1 = new List<NodesStructure>();
+        for(int i = 0; i < nodes.Length; i++)
+        {
+            if(nodes[i].layer == index)
+            {
+                node1.Add(nodes[i]);
+            }
+        }
+        float ymin = 100;
+        float ymax = 100;
+       for(int i = 0; i < node1.Count; i++)
+        {
+            if (node1[i].y1 < ymin)
+            {
+                ymin = (float)node1[i].y1;
+            }
+        }
+        for (int i = 0; i < node1.Count; i++)
+        {
+            if (node1[i].y0 < ymax && node1[i].y0 >ymin)
+            {
+                ymax = (float)node1[i].y0;
+            }
+        }
+
+        return (float)(ymax - ymin);
+
+      
+    }
 
     //Draw the Bizare curve of Link
     private void DrawLinearCurve(MeshFilter lineobject, LineRenderer lineRenderer, Vector3 position1, Vector3 position2, Vector3 position3, Vector3 position4, float width, float LDepth, float RDepth)

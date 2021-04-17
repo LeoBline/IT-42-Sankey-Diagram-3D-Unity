@@ -227,19 +227,24 @@ public class NodeShow : MonoBehaviour
 
     private void Update()
     {
-        if(GameLineObjectList != null)
+        if (DragNode3D.isClick == true)
         {
-            foreach (GameObject line in GameLineObjectList)
+            if (GameLineObjectList != null)
             {
-                Destroy(line);
-            }
-            for (int i = 0; i < linksStructures.Length; i++)
-            {
-                GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
+                foreach (GameObject line in GameLineObjectList)
+                {
+                    Destroy(line);
+                }
+                for (int i = 0; i < linksStructures.Length; i++)
+                {
+                    GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
+                }
             }
         }
         
     }
+
+    
     private interface IGraphVisual
     {
         List<GameObject> AddGraphVisual(Vector3 graphPosition, float barWidth, float barHight, float Zposition, string tooltipText);

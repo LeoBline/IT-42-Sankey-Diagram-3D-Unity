@@ -7,6 +7,7 @@ public class ButtonBeauty : MonoBehaviour
 {
     public GameObject panel;
     public GameObject buttonObj;
+    public NodeShow nodeShow;
     public static bool hoverFunction = false;
     //true: hover
     //false: drag
@@ -38,6 +39,18 @@ public class ButtonBeauty : MonoBehaviour
             {
                 //become drag from hover function
                 hoverFunction = true;
+            }
+            if (gameObject.transform.name.ToString().Equals("LefButton"))
+            {
+                nodeShow.Align("left");
+            }
+            if (gameObject.transform.name.ToString().Equals("RightButton"))
+            {
+                nodeShow.Align("right");
+            }
+            if (gameObject.transform.name.ToString().Equals("CenterButton"))
+            {
+                nodeShow.Align("right");
             }
             choice = true;
         }

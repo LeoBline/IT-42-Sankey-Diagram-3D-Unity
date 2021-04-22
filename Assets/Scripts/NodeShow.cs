@@ -53,7 +53,7 @@ public class NodeShow : MonoBehaviour
         //obj1.transform.localScale = new Vector3(500,2,500);
         AddTag("Cube", gameObject);
         AddTag("Link", gameObject);
-      
+        Debug.Log(JsonReaderObject.GetComponent<JsonReaderTest>().align);
         nodesStructures = JsonReaderObject.GetComponent<JsonReaderTest>().NodesStructures;
         linksStructures = JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures;
         instance = this;
@@ -63,27 +63,31 @@ public class NodeShow : MonoBehaviour
         GameObjectList = new List<GameObject>();
         GameLineObjectList = new List<GameObject>();
         showGraph(nodesStructures, linksStructures);
-        transform.Find("Left").GetComponent<Button_UI>().ClickFunc = () =>
+       
+    }
+    public void Align(string align)
+    {
+        if(align =="left")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.left;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
             Update();
-        };
-        transform.Find("Right").GetComponent<Button_UI>().ClickFunc = () =>
+        }
+        if (align == "right")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
             Update();
-        };
-        transform.Find("Center").GetComponent<Button_UI>().ClickFunc = () =>
+        }
+        if (align == "center")
         {
-            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.center;
+            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
             Update();
-        };
+        }
     }
 
     #region addtag
@@ -127,7 +131,6 @@ public class NodeShow : MonoBehaviour
     private GameObject CreateBar(Vector3 graphPosition, float barWidth, float barHight, float Zposition, NodesStructure Node, int i)
     {
         GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        gameObject.AddComponent<Transform>();
         gameObject.GetComponent<MeshRenderer>().material = null;
         if (Node.name.Contains("Coal"))
         {
@@ -227,36 +230,52 @@ public class NodeShow : MonoBehaviour
 
     private void Update()
     {
-        if (DragNode3D.isClick == true || ClearlyShow.hover == true)
+        if (continulFlag == true)
         {
-          
-            if (GameLineObjectList != null)
+            for (int i = 0; i < transform.childCount; i++)
             {
-                foreach (GameObject line in GameLineObjectList)
+
+                if (transform.GetChild(i).name.Contains("@") )
                 {
-                    Destroy(line);
-                }
-                for (int i = 0; i < linksStructures.Length; i++)
-                {
-                    GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
+                    Debug.Log(transform.GetChild(i).gameObject.name);
+                    Destroy(transform.GetChild(i).gameObject);
                 }
             }
-            if(ClearlyShow.hover == true)
+            continulFlag = false;
+            Start();
+            
+        }
+        else {
+            if (DragNode3D.isClick == true || ClearlyShow.hover == true)
             {
-                
-                Debug.Log("LInkList number: "+ClearlyShow.linkList.Count);
-                for(int i = 0; i < ClearlyShow.linkList.Count; i++)
+
+                if (GameLineObjectList != null)
                 {
-                    Debug.Log("11111"+ ClearlyShow.linkList[i]);
-                    GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(58 / 255f, 95 / 255f, 205 / 255f, 255 / 255f);
+                    foreach (GameObject line in GameLineObjectList)
+                    {
+                        Destroy(line);
+                    }
+                    for (int i = 0; i < linksStructures.Length; i++)
+                    {
+                        GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
+                    }
                 }
-            }
-            if (ClearlyShow.hover == true)
-            {
-                ClearlyShow.hover = false;
+                if (ClearlyShow.hover == true)
+                {
+
+                    Debug.Log("LInkList number: " + ClearlyShow.linkList.Count);
+                    for (int i = 0; i < ClearlyShow.linkList.Count; i++)
+                    {
+                        Debug.Log("11111" + ClearlyShow.linkList[i]);
+                        GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(58 / 255f, 95 / 255f, 205 / 255f, 255 / 255f);
+                    }
+                }
+                if (ClearlyShow.hover == true)
+                {
+                    ClearlyShow.hover = false;
+                }
             }
         }
-
         
     }
 
@@ -313,6 +332,7 @@ public class NodeShow : MonoBehaviour
     private GameObject CreateLink(LinksStructure link)
     {
         GameObject lineobject = new GameObject("line");
+        lineobject.transform.parent = this.transform;
         MeshFilter meshFilter = lineobject.AddComponent<MeshFilter>();
         lineobject.AddComponent<MeshRenderer>();
         lineobject.AddComponent<LineRenderer>();

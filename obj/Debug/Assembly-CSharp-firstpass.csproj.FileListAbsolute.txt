@@ -1000,3 +1000,7 @@ E:/IT 2/IT-42-Sankey-Diagram-3D-Unity/obj/Debug/Assembly-CSharp-firstpass.csproj
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/Temp/bin/Debug/UnityEngine.TestRunner.pdb
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/Temp/bin/Debug/UnityEditor.TestRunner.pdb
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/obj/Debug/Assembly-CSharp-firstpass.csproj.CopyComplete
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-firstpass.csprojAssemblyReference.cache
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-firstpass.csproj.CoreCompileInputs.cache
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-firstpass.dll
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-firstpass.pdb

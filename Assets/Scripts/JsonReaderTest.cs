@@ -347,18 +347,30 @@ public class JsonReaderTest : MonoBehaviour
             //{
             //    NodesStructures[i].tostring();
             //}
-            gameObject.SetActive(false);
+            StartCoroutine(WaitForSeconds(3, () =>
+            {
+                gameObject.SetActive(false);
+            }));
+            
             gameObject.transform.parent.GetComponent<NodeShow>().reloadFlag = true;
         }
     }
 
+    public static IEnumerator WaitForSeconds(float duration, Action action = null)
+    {
+        yield return new WaitForSeconds(duration);
+        action?.Invoke();
+    }
+
     void Update()
     {
-        ComputeNodeHeights();
-        ComputeNodeDepths();
 
-        ComputeNodeBreadths();
-        computeLinkBreadths();
+            ComputeNodeHeights();
+            ComputeNodeDepths();
+
+            ComputeNodeBreadths();
+            computeLinkBreadths();
+        
         gameObject.SetActive(false);
     }
     public void ComputeNodeBreadths()
@@ -651,7 +663,7 @@ public class JsonReaderTest : MonoBehaviour
         }
     }
 
-    public void ComputeNodeHeights()
+   async public void ComputeNodeHeights()
     {
         List<NodesStructure> current = new List<NodesStructure>(NodesStructures);
         List<NodesStructure> next=new List<NodesStructure>();

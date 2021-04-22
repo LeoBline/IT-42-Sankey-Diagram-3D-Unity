@@ -730,3 +730,7 @@ E:/IT 2/IT-42-Sankey-Diagram-3D-Unity/obj/Debug/Assembly-CSharp.pdb
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/Temp/bin/Debug/nunit.framework.pdb
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/Temp/bin/Debug/nunit.framework.dll.mdb
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/Temp/bin/Debug/nunit.framework.xml
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.dll
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp.pdb

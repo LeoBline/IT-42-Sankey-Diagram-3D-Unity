@@ -455,6 +455,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 599199813}
   buttonObj: {fileID: 65489799}
+  nodeShow: {fileID: 0}
 --- !u!114 &65489805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,6 +508,7 @@ MonoBehaviour:
   LineReadererPointsCount: 200
   PositionScale: 1
   RatioHighAndArea: 16
+  linkMaterial: {fileID: 2100000, guid: 9edef8fe1f355184ca5515a1770d156e, type: 2}
   Bio: {fileID: 2100000, guid: fc72bffe70881f2479c71347efd9619d, type: 2}
   Elec: {fileID: 2100000, guid: cd6f0c3d7e86c6241ad31a631b0ec3c9, type: 2}
   Hy: {fileID: 2100000, guid: 79500dbda1f231e41ad24785ab189379, type: 2}
@@ -542,6 +544,7 @@ MonoBehaviour:
   LineReadererPointsCount: 200
   PositionScale: 0.25
   RatioHighAndArea: 64
+  linkMaterial: {fileID: 0}
   Bio: {fileID: 2100000, guid: fc72bffe70881f2479c71347efd9619d, type: 2}
   Elec: {fileID: 2100000, guid: cd6f0c3d7e86c6241ad31a631b0ec3c9, type: 2}
   Hy: {fileID: 2100000, guid: 79500dbda1f231e41ad24785ab189379, type: 2}
@@ -2489,6 +2492,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 742648482}
   buttonObj: {fileID: 803996491}
+  nodeShow: {fileID: 69425008}
 --- !u!1001 &839409166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3323,6 +3327,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 280340036}
   buttonObj: {fileID: 1009527238}
+  nodeShow: {fileID: 69425008}
 --- !u!1 &1020674795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3550,6 +3555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 650604228}
   buttonObj: {fileID: 1098915332}
+  nodeShow: {fileID: 0}
 --- !u!850595691 &1117120033
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -4228,6 +4234,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1518341554}
   buttonObj: {fileID: 1456472248}
+  nodeShow: {fileID: 69425008}
 --- !u!1 &1480220289
 GameObject:
   m_ObjectHideFlags: 0
@@ -4377,6 +4384,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1273946080}
   buttonObj: {fileID: 1480220289}
+  nodeShow: {fileID: 0}
 --- !u!114 &1480220295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4519,6 +4527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 739171887}
   buttonObj: {fileID: 1546534191}
+  nodeShow: {fileID: 0}
 --- !u!114 &1546534194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4669,6 +4678,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 87937025}
   buttonObj: {fileID: 1606977119}
+  nodeShow: {fileID: 0}
 --- !u!114 &1606977122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5182,6 +5192,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 1306434776}
   buttonObj: {fileID: 1690450255}
+  nodeShow: {fileID: 69425008}
 --- !u!1 &1837299870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,6 +5643,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 225136024}
   buttonObj: {fileID: 2000979551}
+  nodeShow: {fileID: 0}
 --- !u!114 &2000979557
 MonoBehaviour:
   m_ObjectHideFlags: 0

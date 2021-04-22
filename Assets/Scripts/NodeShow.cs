@@ -17,7 +17,7 @@ public class NodeShow : MonoBehaviour
     public int LineReadererPointsCount = 200;
     public float PositionScale = 0.25f;
     public float RatioHighAndArea = 64;
-    public static Material linkMaterial;
+    public  Material linkMaterial;
     private static NodeShow instance;
     private GameObject tooltipGameObject;
     private List<GameObject> GameObjectList;
@@ -71,22 +71,23 @@ public class NodeShow : MonoBehaviour
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.left;
             JsonReaderObject.SetActive(true);
+
             continulFlag = true;
-            Update();
+            
         }
         if (align == "right")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
-            Update();
+            
         }
         if (align == "center")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
-            Update();
+            
         }
     }
 
@@ -226,6 +227,11 @@ public class NodeShow : MonoBehaviour
 
 
     }
+    public static IEnumerator WaitForSeconds(float duration, Action action = null)
+    {
+        yield return new WaitForSeconds(duration);
+        action?.Invoke();
+    }
 
 
     private void Update()
@@ -241,9 +247,16 @@ public class NodeShow : MonoBehaviour
                     Destroy(transform.GetChild(i).gameObject);
                 }
             }
-            continulFlag = false;
-            Start();
+
+            StartCoroutine(WaitForSeconds(0.05f, () =>
+            {
+                Start();
+            }));
+                
             
+            continulFlag = false;
+
+
         }
         else {
             if (DragNode3D.isClick == true || ClearlyShow.hover == true)

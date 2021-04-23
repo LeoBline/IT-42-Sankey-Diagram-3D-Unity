@@ -62,9 +62,6 @@ public class NodeShow : MonoBehaviour
         barlist = new GameObject[nodesStructures.Length];
         linklist = new GameObject[JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures.Length];
         groupContainer = transform.GetComponent<RectTransform>();
-        GameObject prototype = Resources.Load("3DTextPrefab") as GameObject;
-        Debug.Log(prototype.GetComponent<TextScript>().EnterTextHere);
-        prototype.transform.SetParent(this.transform);
         GameObjectList = new List<GameObject>();
         GameLineObjectList = new List<GameObject>();
         showGraph(nodesStructures, linksStructures);
@@ -167,6 +164,13 @@ public class NodeShow : MonoBehaviour
         gameObject.transform.SetParent(groupContainer, false);
         gameObject.AddComponent<DragNode3D>();
         gameObject.AddComponent<ClearlyShow>();
+        GameObject gameObject1 = new GameObject();
+        gameObject1.transform.position = new Vector3(graphPosition.x, graphPosition.y, graphPosition.z * 2);
+        gameObject1.transform.SetParent(groupContainer, false);
+        GameObject prototype = Resources.Load("3DTextPrefab") as GameObject;
+        GameObject Prefabtest = Instantiate(prototype);
+        Prefabtest.GetComponent<TextScript>().EnterTextHere =Node.name;
+        Prefabtest.GetComponent<TextScript>().TextAppearingPosRot = gameObject1;
         return gameObject;
     }
     void OnGUI()

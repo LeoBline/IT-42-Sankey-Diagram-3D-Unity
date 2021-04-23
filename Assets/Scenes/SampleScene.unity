@@ -503,6 +503,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dotSprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
   JsonReaderObject: {fileID: 1861260117}
+  Text1: {fileID: -927199367670048503, guid: a72fd60c911fd3345a59bd0125860270, type: 3}
   textlist: []
   splitCount: 15
   LineReadererPointsCount: 200
@@ -518,42 +519,6 @@ MonoBehaviour:
   others: {fileID: 2100000, guid: 5dc3223e87aadb7408886e04ec985dac, type: 2}
   textFontSize: 16
   lineAlpha: 0.181
-  continulFlag: 0
-  dragFlag: 0
-  reloadFlag: 0
-  dragNode: 
-  stringToEdit: 'Hello World
-
-    I''ve got 2 lines...'
---- !u!114 &69425009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 69425002}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c71cab6eb0dd4a51881a2ed66a03c56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dotSprite: {fileID: 0}
-  JsonReaderObject: {fileID: 0}
-  textlist: []
-  splitCount: 15
-  LineReadererPointsCount: 200
-  PositionScale: 0.25
-  RatioHighAndArea: 64
-  linkMaterial: {fileID: 0}
-  Bio: {fileID: 2100000, guid: fc72bffe70881f2479c71347efd9619d, type: 2}
-  Elec: {fileID: 2100000, guid: cd6f0c3d7e86c6241ad31a631b0ec3c9, type: 2}
-  Hy: {fileID: 2100000, guid: 79500dbda1f231e41ad24785ab189379, type: 2}
-  Coal: {fileID: 2100000, guid: 50ba82052401ca340bde8e0dcc88cfb4, type: 2}
-  Solar: {fileID: 2100000, guid: 6fa7c9c5d31c11945a3ff65b277fda1c, type: 2}
-  Oil: {fileID: 2100000, guid: 44b3d3560e67add47bceb992277fdbea, type: 2}
-  others: {fileID: 2100000, guid: 5dc3223e87aadb7408886e04ec985dac, type: 2}
-  textFontSize: 10
-  lineAlpha: 0.69
   continulFlag: 0
   dragFlag: 0
   reloadFlag: 0

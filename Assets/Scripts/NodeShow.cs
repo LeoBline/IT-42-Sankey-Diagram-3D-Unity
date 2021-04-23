@@ -10,6 +10,7 @@ public class NodeShow : MonoBehaviour
 {
     [SerializeField] private Sprite dotSprite;
     public GameObject JsonReaderObject;
+    public GameObject Text1;
     public List<GameObject> textlist;
     private RectTransform groupContainer;
     private RectTransform window_Graph;
@@ -47,6 +48,7 @@ public class NodeShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         //GameObject obj1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
         ////设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
         //obj1.transform.position = new Vector3(1, 1, 1);
@@ -60,6 +62,9 @@ public class NodeShow : MonoBehaviour
         barlist = new GameObject[nodesStructures.Length];
         linklist = new GameObject[JsonReaderObject.GetComponent<JsonReaderTest>().LinksStructures.Length];
         groupContainer = transform.GetComponent<RectTransform>();
+        GameObject prototype = Resources.Load("3DTextPrefab") as GameObject;
+        Debug.Log(prototype.GetComponent<TextScript>().EnterTextHere);
+        prototype.transform.SetParent(this.transform);
         GameObjectList = new List<GameObject>();
         GameLineObjectList = new List<GameObject>();
         showGraph(nodesStructures, linksStructures);
@@ -160,10 +165,8 @@ public class NodeShow : MonoBehaviour
         gameObject.name = Node.name + "@" + Node.value.ToString();
         gameObject.transform.tag = "Cube";
         gameObject.transform.SetParent(groupContainer, false);
-        gameObject.AddComponent<Text>().text =Node.name ;
         gameObject.AddComponent<DragNode3D>();
         gameObject.AddComponent<ClearlyShow>();
-
         return gameObject;
     }
     void OnGUI()

@@ -18,7 +18,7 @@ public class NodeShow : MonoBehaviour
     public int LineReadererPointsCount = 200;
     public float PositionScale = 0.25f;
     public float RatioHighAndArea = 64;
-    public  Material linkMaterial;
+    public Material linkMaterial;
     private static NodeShow instance;
     private GameObject tooltipGameObject;
     private List<GameObject> GameObjectList;
@@ -48,7 +48,7 @@ public class NodeShow : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+
         //GameObject obj1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
         ////设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
         //obj1.transform.position = new Vector3(1, 1, 1);
@@ -65,31 +65,31 @@ public class NodeShow : MonoBehaviour
         GameObjectList = new List<GameObject>();
         GameLineObjectList = new List<GameObject>();
         showGraph(nodesStructures, linksStructures);
-       
+
     }
     public void Align(string align)
     {
-        if(align =="left")
+        if (align == "left")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.left;
             JsonReaderObject.SetActive(true);
 
             continulFlag = true;
-            
+
         }
         if (align == "right")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
-            
+
         }
         if (align == "center")
         {
             JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
-            
+
         }
     }
 
@@ -164,13 +164,11 @@ public class NodeShow : MonoBehaviour
         gameObject.transform.SetParent(groupContainer, false);
         gameObject.AddComponent<DragNode3D>();
         gameObject.AddComponent<ClearlyShow>();
-        GameObject gameObject1 = new GameObject();
-        gameObject1.transform.position = new Vector3(graphPosition.x, graphPosition.y, graphPosition.z * 2);
-        gameObject1.transform.SetParent(groupContainer, false);
         GameObject prototype = Resources.Load("3DTextPrefab") as GameObject;
         GameObject Prefabtest = Instantiate(prototype);
-        Prefabtest.GetComponent<TextScript>().EnterTextHere =Node.name;
-        Prefabtest.GetComponent<TextScript>().TextAppearingPosRot = gameObject1;
+        Prefabtest.transform.parent = this.transform;
+        Prefabtest.GetComponent<TextScript>().EnterTextHere = Node.name;
+        Prefabtest.GetComponent<TextScript>().TextAppearingPosRot1 = gameObject;
         return gameObject;
     }
     void OnGUI()
@@ -224,7 +222,7 @@ public class NodeShow : MonoBehaviour
             //float areaHigh = areaWidth * (float)Math.Pow(RatioHighAndArea, 0.5);
             //barHight = areaWidth * RatioHighAndArea;
             //areaWidth = areaHigh;,
-            GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition , barHight / 2, yPosition),10 , barHight, getMinLength(nodesStructures), "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
+            GameObjectList.AddRange(AddGraphVisual(new Vector3(xPosition, barHight / 2, yPosition), 10, barHight, getMinLength(nodesStructures), "name:" + name + " Value:" + Value + " Depth: " + nodesStructures[i].depth.ToString() + " layer: " + nodesStructures[i].layer.ToString(), nodesStructures[i], i));
         }
         for (int i = 0; i < links.Length; i++)
         {
@@ -247,25 +245,31 @@ public class NodeShow : MonoBehaviour
         {
             for (int i = 0; i < transform.childCount; i++)
             {
+                if (transform.GetChild(i).name.Contains("(Clone)"))
+                {
+                    Destroy(transform.GetChild(i).gameObject);
+                }
 
-                if (transform.GetChild(i).name.Contains("@") )
+                if (transform.GetChild(i).name.Contains("@"))
                 {
                     Debug.Log(transform.GetChild(i).gameObject.name);
                     Destroy(transform.GetChild(i).gameObject);
                 }
+
             }
 
             StartCoroutine(WaitForSeconds(0.05f, () =>
             {
                 Start();
             }));
-                
-            
+
+
             continulFlag = false;
 
 
         }
-        else {
+        else
+        {
             if (DragNode3D.isClick == true || ClearlyShow.hover == true)
             {
 
@@ -296,11 +300,11 @@ public class NodeShow : MonoBehaviour
                 }
             }
         }
-        
+
     }
 
-    
-    
+
+
     private interface IGraphVisual
     {
         List<GameObject> AddGraphVisual(Vector3 graphPosition, float barWidth, float barHight, float Zposition, string tooltipText);
@@ -345,7 +349,7 @@ public class NodeShow : MonoBehaviour
         return new List<GameObject>() { barGameObject };
     }
 
-    
+
 
 
 
@@ -378,7 +382,7 @@ public class NodeShow : MonoBehaviour
         line.SetColors(new Color(1, 1, 1, lineAlpha), new Color(1, 1, 1, lineAlpha));
         string SourceNodeName = link.SourceNode.name + "@" + link.SourceNode.value;
         GameObject SourceNode = GameObject.Find(SourceNodeName);
-        float y0_3D = SourceNode.transform.position.y + (float)link.width/2;
+        float y0_3D = SourceNode.transform.position.y + (float)link.width / 2;
         //float y0_3D = (float)link.y0_3D + (float)link.width / 2;
         string TargetNodeName = link.TargetNode.name + "@" + link.TargetNode.value;
         GameObject TargetNode = GameObject.Find(TargetNodeName);
@@ -394,7 +398,7 @@ public class NodeShow : MonoBehaviour
 
 
         //float z0 = (float)(link.SourceNode.y0 + ((float)link.SourceNode.y1 - (float)link.SourceNode.y0) / 2) * PositionScale - 10 / 2;
-        
+
         //float x0 = (float)(link.SourceNode.x0 + ((float)link.SourceNode.x1 - (float)link.SourceNode.x0) / 2) * PositionScale + 10 / 2;
         //float z1 = (float)(link.TargetNode.y0 + ((float)link.TargetNode.y1 - (float)link.TargetNode.y0) / 2) * PositionScale - 10 / 2;
         //float x1 = (float)(link.TargetNode.x0 + ((float)link.TargetNode.x1 - (float)link.TargetNode.x0) / 2) * PositionScale - 10 / 2;
@@ -421,16 +425,16 @@ public class NodeShow : MonoBehaviour
     private float getMinLength(NodesStructure[] nodes)
     {
         int max = 0;
-      for(int i = 0; i < nodes.Length; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
-           if(max < nodes[i].layer)
+            if (max < nodes[i].layer)
             {
-               max = nodes[i].layer;
+                max = nodes[i].layer;
             }
         }
-     
-      int[]  ay = new int[max];
-       for(int m = 0; m < max; m++)
+
+        int[] ay = new int[max];
+        for (int m = 0; m < max; m++)
         {
             int number = 0;
             for (int i = 0; i < nodes.Length; i++)
@@ -442,13 +446,13 @@ public class NodeShow : MonoBehaviour
 
             }
             ay[m] = number;
-          
+
         }
         int m1 = 0;
         int index = 0;
-       for(int y = 0; y < ay.Length; y++)
+        for (int y = 0; y < ay.Length; y++)
         {
-            if(ay[y] > m1)
+            if (ay[y] > m1)
             {
                 m1 = ay[y];
                 index = y;
@@ -456,16 +460,16 @@ public class NodeShow : MonoBehaviour
         }
         Debug.Log("index" + index);
         List<NodesStructure> node1 = new List<NodesStructure>();
-        for(int i = 0; i < nodes.Length; i++)
+        for (int i = 0; i < nodes.Length; i++)
         {
-            if(nodes[i].layer == index)
+            if (nodes[i].layer == index)
             {
                 node1.Add(nodes[i]);
             }
         }
         float ymin = 100;
         float ymax = 100;
-       for(int i = 0; i < node1.Count; i++)
+        for (int i = 0; i < node1.Count; i++)
         {
             if (node1[i].y1 < ymin)
             {
@@ -474,7 +478,7 @@ public class NodeShow : MonoBehaviour
         }
         for (int i = 0; i < node1.Count; i++)
         {
-            if (node1[i].y0 < ymax && node1[i].y0 >ymin)
+            if (node1[i].y0 < ymax && node1[i].y0 > ymin)
             {
                 ymax = (float)node1[i].y0;
             }
@@ -482,7 +486,7 @@ public class NodeShow : MonoBehaviour
 
         return (float)(ymax - ymin);
 
-      
+
     }
 
     //Draw the Bizare curve of Link

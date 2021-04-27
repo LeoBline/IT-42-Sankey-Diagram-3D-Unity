@@ -60,7 +60,9 @@ public class NodesStructure
 
 
     /**
-     *  calculate current node's value
+     *  1.calculate current node's value
+     *  2.calculate the value of energy
+     *  3.
      *  计算当前node的value
      *  分别计算传入/传出当前node的能量，并将其中较大的一方设为value
      *  对于桑基图中间的node传入和传出是一样大的，
@@ -97,13 +99,19 @@ public class NodesStructure
 
 
 /**
- * 按列存储node，按列在桑基图中画出位置
+ * To display Sankey，each node in diagram is in different column
+ * This class provide a data structure to save nodes in different column
  */
 public class ColumnNodes
 {
     public List<NodesStructure> Columnnode { get; set; }
 }
 
+/**
+ * Sankey diagram is divided into nodes and links
+ * This class save each attribute of one link
+ * The attributes are read from JSON file directly.There is no any new calculated value.
+ */
 public class LinksStructure
 {
     public double value { get; set; }
@@ -118,7 +126,7 @@ public class LinksStructure
 }
 
 /**
- * 过渡用的对象
+ * This class provide a transition for link display过渡用的对象
  * json 数据中的link 所拥有的数据
  */
 public class LinksItem

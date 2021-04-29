@@ -24,13 +24,15 @@ public class Controlcursor : MonoBehaviour
                 Cursor.visible = true;
                 Debug.Log("visiable");
                 Cursorvisiable = true;
-                
+                Screen.lockCursor = false;
+
             }
             else
             {
                 Cursor.visible = false;
                 Debug.Log("Unvisiable");
                 Cursorvisiable = false;
+                Screen.lockCursor = true;
             }
         }
     }

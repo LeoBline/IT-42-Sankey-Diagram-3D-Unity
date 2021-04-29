@@ -22,6 +22,7 @@ public class DragNode3D : MonoBehaviour
     }
     void OnMouseDrag()
     {
+
         transform.position = GetMouseWorldPos() + mOffset;
     }
 

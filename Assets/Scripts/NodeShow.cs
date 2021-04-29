@@ -86,7 +86,14 @@ public class NodeShow : MonoBehaviour
         }
         if (align == "center")
         {
-            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.right;
+            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.center;
+            JsonReaderObject.SetActive(true);
+            continulFlag = true;
+
+        }
+        if (align == "justify")
+        {
+            JsonReaderObject.GetComponent<JsonReaderTest>().align = JsonReaderTest.aligns.justify;
             JsonReaderObject.SetActive(true);
             continulFlag = true;
 
@@ -166,7 +173,7 @@ public class NodeShow : MonoBehaviour
         gameObject.AddComponent<ClearlyShow>();
         GameObject prototype = Resources.Load("3DTextPrefab") as GameObject;
         GameObject Prefabtest = Instantiate(prototype);
-        Prefabtest.transform.parent = this.transform;
+        Prefabtest.transform.parent = gameObject.transform;
         Prefabtest.GetComponent<TextScript>().EnterTextHere = Node.name;
         Prefabtest.GetComponent<TextScript>().TextAppearingPosRot1 = gameObject;
         return gameObject;

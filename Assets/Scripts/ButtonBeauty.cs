@@ -50,7 +50,11 @@ public class ButtonBeauty : MonoBehaviour
             }
             if (gameObject.transform.name.ToString().Equals("CenterButton"))
             {
-                nodeShow.Align("right");
+                nodeShow.Align("center");
+            }
+            if (gameObject.transform.name.ToString().Equals("JustifyButton"))
+            {
+                nodeShow.Align("justify");
             }
             choice = true;
         }

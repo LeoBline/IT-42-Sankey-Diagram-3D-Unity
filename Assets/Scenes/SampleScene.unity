@@ -456,6 +456,7 @@ MonoBehaviour:
   panel: {fileID: 599199813}
   buttonObj: {fileID: 65489799}
   nodeShow: {fileID: 0}
+  choice: 0
 --- !u!114 &65489805
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2322,6 +2323,7 @@ GameObject:
   - component: {fileID: 803996494}
   - component: {fileID: 803996493}
   - component: {fileID: 803996496}
+  - component: {fileID: 803996497}
   m_Layer: 5
   m_Name: CenterButton
   m_TagString: Untagged
@@ -2405,6 +2407,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 803996497}
+        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &803996494
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2458,6 +2472,24 @@ MonoBehaviour:
   panel: {fileID: 742648482}
   buttonObj: {fileID: 803996491}
   nodeShow: {fileID: 69425008}
+  choice: 0
+--- !u!114 &803996497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803996491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014903bf80bc5f74d9011b84d06cbf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  justify: {fileID: 1009527240}
+  right: {fileID: 1690450257}
+  left: {fileID: 1456472250}
+  center: {fileID: 803996493}
+  butObject: {fileID: 803996493}
 --- !u!1001 &839409166
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3157,6 +3189,7 @@ GameObject:
   - component: {fileID: 1009527241}
   - component: {fileID: 1009527240}
   - component: {fileID: 1009527243}
+  - component: {fileID: 1009527244}
   m_Layer: 5
   m_Name: JustifyButton
   m_TagString: Untagged
@@ -3240,6 +3273,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1009527244}
+        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1009527241
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3293,6 +3338,24 @@ MonoBehaviour:
   panel: {fileID: 280340036}
   buttonObj: {fileID: 1009527238}
   nodeShow: {fileID: 69425008}
+  choice: 0
+--- !u!114 &1009527244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1009527238}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014903bf80bc5f74d9011b84d06cbf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  justify: {fileID: 1009527240}
+  right: {fileID: 1690450257}
+  left: {fileID: 1456472250}
+  center: {fileID: 803996493}
+  butObject: {fileID: 1009527240}
 --- !u!1 &1020674795
 GameObject:
   m_ObjectHideFlags: 0
@@ -3521,6 +3584,7 @@ MonoBehaviour:
   panel: {fileID: 650604228}
   buttonObj: {fileID: 1098915332}
   nodeShow: {fileID: 0}
+  choice: 0
 --- !u!850595691 &1117120033
 LightingSettings:
   m_ObjectHideFlags: 0
@@ -4064,6 +4128,7 @@ GameObject:
   - component: {fileID: 1456472251}
   - component: {fileID: 1456472250}
   - component: {fileID: 1456472253}
+  - component: {fileID: 1456472254}
   m_Layer: 5
   m_Name: LefButton
   m_TagString: Untagged
@@ -4147,6 +4212,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1456472254}
+        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1456472251
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4200,6 +4277,24 @@ MonoBehaviour:
   panel: {fileID: 1518341554}
   buttonObj: {fileID: 1456472248}
   nodeShow: {fileID: 69425008}
+  choice: 0
+--- !u!114 &1456472254
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1456472248}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014903bf80bc5f74d9011b84d06cbf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  justify: {fileID: 1009527240}
+  right: {fileID: 1690450257}
+  left: {fileID: 1456472250}
+  center: {fileID: 803996493}
+  butObject: {fileID: 1456472250}
 --- !u!1 &1480220289
 GameObject:
   m_ObjectHideFlags: 0
@@ -4350,6 +4445,7 @@ MonoBehaviour:
   panel: {fileID: 1273946080}
   buttonObj: {fileID: 1480220289}
   nodeShow: {fileID: 0}
+  choice: 0
 --- !u!114 &1480220295
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4493,6 +4589,7 @@ MonoBehaviour:
   panel: {fileID: 739171887}
   buttonObj: {fileID: 1546534191}
   nodeShow: {fileID: 0}
+  choice: 0
 --- !u!114 &1546534194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4644,6 +4741,7 @@ MonoBehaviour:
   panel: {fileID: 87937025}
   buttonObj: {fileID: 1606977119}
   nodeShow: {fileID: 0}
+  choice: 0
 --- !u!114 &1606977122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5022,6 +5120,7 @@ GameObject:
   - component: {fileID: 1690450258}
   - component: {fileID: 1690450257}
   - component: {fileID: 1690450260}
+  - component: {fileID: 1690450261}
   m_Layer: 5
   m_Name: RightButton
   m_TagString: Untagged
@@ -5105,6 +5204,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1690450261}
+        m_TargetAssemblyTypeName: ButtonControl, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1690450258
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5158,6 +5269,24 @@ MonoBehaviour:
   panel: {fileID: 1306434776}
   buttonObj: {fileID: 1690450255}
   nodeShow: {fileID: 69425008}
+  choice: 0
+--- !u!114 &1690450261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1690450255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 014903bf80bc5f74d9011b84d06cbf36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  justify: {fileID: 1009527240}
+  right: {fileID: 1690450257}
+  left: {fileID: 1456472250}
+  center: {fileID: 803996493}
+  butObject: {fileID: 1690450257}
 --- !u!1 &1837299870
 GameObject:
   m_ObjectHideFlags: 0
@@ -5609,6 +5738,7 @@ MonoBehaviour:
   panel: {fileID: 225136024}
   buttonObj: {fileID: 2000979551}
   nodeShow: {fileID: 0}
+  choice: 0
 --- !u!114 &2000979557
 MonoBehaviour:
   m_ObjectHideFlags: 0

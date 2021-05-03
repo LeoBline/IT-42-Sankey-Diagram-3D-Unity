@@ -12,7 +12,7 @@ public class ButtonBeauty : MonoBehaviour
     //true: hover
     //false: drag
     public static bool hoverOrdrag = true;
-    private bool choice = false;
+    public bool choice = false;
     void Start()
     {
     }
@@ -21,6 +21,26 @@ public class ButtonBeauty : MonoBehaviour
         if(choice == false)
         {
             buttonObj.GetComponent<Image>().color = new Color(222 / 255f, 222 / 255f, 222 / 255f, 255 / 255f);
+        }
+    }
+    public void ChangeChoice()
+    {
+        if (choice)
+        {
+            Debug.Log("Unclick   ......");
+            panel.GetComponent<Image>().color = new Color(0 / 255f, 0 / 255f, 0 / 255f, 0 / 255f);
+            buttonObj.GetComponent<Image>().color = new Color(222 / 255f, 222 / 255f, 222 / 255f, 255 / 255f);
+            if (gameObject.transform.name.ToString().Equals("DragButton"))
+            {
+                //become hover;
+                hoverOrdrag = true;
+            }
+            if (gameObject.transform.name.ToString().Equals("HoverButton"))
+            {
+                //become drag from hover function
+                hoverFunction = false;
+            }
+            choice = false;
         }
     }
     public void Click()

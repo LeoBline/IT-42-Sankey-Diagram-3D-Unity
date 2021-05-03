@@ -685,6 +685,7 @@ public class NodeShow : MonoBehaviour
         return p;
 
     }
+    
     public List<GameObject> AddGraphLineVisual(string tooltipText, LinksStructure a)
     {
         GameObject lineGameObject = CreateLink(a);

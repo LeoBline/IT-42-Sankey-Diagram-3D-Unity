@@ -54,7 +54,7 @@ public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     private float mouseOverPerSecFuncTimer;
 
     private Action internalOnPointerEnterFunc, internalOnPointerExitFunc, internalOnPointerClickFunc;
-    
+
     // sound manager:
 #if SOUND_MANAGER
     public Sound_Manager.Sound mouseOverSound, mouseClickSound;

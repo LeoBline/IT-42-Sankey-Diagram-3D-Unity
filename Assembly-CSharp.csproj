@@ -57,6 +57,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\Button_UI.cs" />
+    <Compile Include="Assets\Scripts\SaveButtonControl.cs" />
     <Compile Include="Assets\Scripts\DrawLine.cs" />
     <Compile Include="Assets\Scripts\DragNode.cs" />
     <Compile Include="Assets\Scripts\CreateJsReader.cs" />

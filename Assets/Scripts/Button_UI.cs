@@ -201,8 +201,4 @@ public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 
         return interceptActionHandler;
     }
-
-
-
-
 }

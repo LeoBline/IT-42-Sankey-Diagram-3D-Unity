@@ -3477,6 +3477,7 @@ GameObject:
   - component: {fileID: 1098915335}
   - component: {fileID: 1098915334}
   - component: {fileID: 1098915337}
+  - component: {fileID: 1098915338}
   m_Layer: 5
   m_Name: SaveButton
   m_TagString: Untagged
@@ -3560,6 +3561,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1098915338}
+        m_TargetAssemblyTypeName: SaveButtonControl, Assembly-CSharp
+        m_MethodName: Click
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1098915335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3614,6 +3627,19 @@ MonoBehaviour:
   buttonObj: {fileID: 1098915332}
   nodeShow: {fileID: 0}
   choice: 0
+--- !u!114 &1098915338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1098915332}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3eaa90b0441c9f24c9249cf19024eef4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myCamera: {fileID: 366661948}
 --- !u!850595691 &1117120033
 LightingSettings:
   m_ObjectHideFlags: 0

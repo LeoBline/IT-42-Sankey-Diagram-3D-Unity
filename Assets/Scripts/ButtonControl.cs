@@ -11,17 +11,7 @@ public class ButtonControl : MonoBehaviour
     public Button center;
     public Button butObject;
     // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
+    
     public void Click()
     {
         string buttonName = butObject.name.ToString();

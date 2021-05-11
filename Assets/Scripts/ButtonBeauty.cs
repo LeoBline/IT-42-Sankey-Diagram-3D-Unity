@@ -13,9 +13,6 @@ public class ButtonBeauty : MonoBehaviour
     //false: drag
     public static bool hoverOrdrag = true;
     public bool choice = false;
-    void Start()
-    {
-    }
     void Update()
     {
         if(choice == false)

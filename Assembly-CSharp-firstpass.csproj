@@ -64,6 +64,7 @@
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingComposite.shader" />
      <None Include="Assets\Plugins\LitJson.dll" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingStencilTransparentZ.shader" />
+     <None Include="Assets\Plugins\System.Windows.Forms.dll" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingInclude.cginc" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingStencilOpaque.shader" />
      <None Include="Assets\Plugins\HighlightingSystem\Resources\HighlightingStencilOpaqueZ.shader" />
@@ -268,6 +269,9 @@
     </Reference>
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>Library\PackageCache\com.unity.analytics@3.5.3\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows.Forms">
+      <HintPath>Assets\Plugins\System.Windows.Forms.dll</HintPath>
     </Reference>
     <Reference Include="mscorlib">
       <HintPath>D:\programInstall\Unity\2020.1.10f1c1\Editor\Data\MonoBleedingEdge\lib\mono\4.7.1-api\mscorlib.dll</HintPath>

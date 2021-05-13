@@ -38,7 +38,7 @@ public class TextScript : MonoBehaviour
         }
 
         SizeOfString = EnterTextHere.Length;
-        Debug.Log(SizeOfString);
+
         gameobjectInstantiated = new GameObject[SizeOfString];
 
         for (int j = 0; j < SizeOfString; j++)

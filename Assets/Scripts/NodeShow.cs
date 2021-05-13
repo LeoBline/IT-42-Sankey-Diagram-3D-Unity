@@ -389,11 +389,11 @@ public class NodeShow : MonoBehaviour
         line.SetColors(new Color(1, 1, 1, lineAlpha), new Color(1, 1, 1, lineAlpha));
         string SourceNodeName = link.SourceNode.name + "@" + link.SourceNode.value;
         GameObject SourceNode = GameObject.Find(SourceNodeName);
-        float y0_3D = SourceNode.transform.position.y + (float)link.width / 2;
+        float y0_3D = SourceNode.transform.position.y+ (float)link.y0_3D + (float)link.width / 2   - SourceNode.transform.localScale.y/2;
         //float y0_3D = (float)link.y0_3D + (float)link.width / 2;
         string TargetNodeName = link.TargetNode.name + "@" + link.TargetNode.value;
         GameObject TargetNode = GameObject.Find(TargetNodeName);
-        float y1_3D = TargetNode.transform.position.y + (float)link.width / 2;
+        float y1_3D = TargetNode.transform.position.y  + (float)link.y1_3D+(float)link.width / 2 - TargetNode.transform.localScale.y/2;
         //float y1_3D = (float)link.y1_3D + (float)link.width / 2;
         float width = (float)link.width;
 
@@ -420,7 +420,8 @@ public class NodeShow : MonoBehaviour
         DrawLinearCurve(meshFilter, line, n1, n2, n3, n4, width, 10, 10);
         lineobject.name = SourceNode.name + "&" + TargetNode.name;
         lineobject.transform.tag = "Link";
-        if (lineobject.name.ToString().Equals(ClearlyShow.showLinkName))
+        
+        if (ClearlyShow.showLinkName.Contains(lineobject.name.ToString()))
         {
             lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
             lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);

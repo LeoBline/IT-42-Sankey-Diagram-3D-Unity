@@ -22,7 +22,7 @@ public class ClearlyShow : MonoBehaviour
     public static bool hover = false;
     public static List<String> targetNameList = new List<String>();
     public static List<String> linkList = new List<string>();
-    public static string showLinkName = "";
+    public static List<String> showLinkName = new List<string>();
     public static string lastNodeName = "";
     public void Start()
     {
@@ -98,6 +98,7 @@ public class ClearlyShow : MonoBehaviour
                     //Debug.Log("changechange");
                     lastNode = GameObject.Find(lastNodeName);
                     DownTheNode(lastNode);
+                    showLinkName.Clear();
                 }
                 showLink = false;
                 float OrdXCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).x;
@@ -143,7 +144,7 @@ public class ClearlyShow : MonoBehaviour
                         if (gb.name.ToString().Split('@')[0].Equals(NodeName))
                         {
                             linkList.Add(gb.name);
-                            showLinkName = gb.name.ToString();
+                            showLinkName.Add(gb.name.ToString());
                             int nameLength = gb.name.ToString().Split('@').Length;
                             string temptargetNodeName = gb.name.ToString().Split('@')[nameLength - 2];
                             targetNodeName = temptargetNodeName.Split('&')[1];
@@ -156,10 +157,13 @@ public class ClearlyShow : MonoBehaviour
                     foreach (GameObject gb in CubeArray)
                     {
                         string targetName = gb.name.ToString().Split('@')[0];
+                        bool flagUp = false;
                         for(int i =0; i< targetNameList.Count; i++)
                         {
                             if (targetName.Equals(targetNameList[i]))
                             {
+                                flagUp = true;
+                                Debug.Log("UP End NODE +100"+ gb.name.ToString().Split('@')[0]);
                                 float CubeOrdXCoord = Camera.main.WorldToScreenPoint(gb.transform.position).x;
                                 float CubeOrdYCoord = Camera.main.WorldToScreenPoint(gb.transform.position).y;
                                 float CubeOrdZCoord = Camera.main.WorldToScreenPoint(gb.transform.position).z;
@@ -189,20 +193,23 @@ public class ClearlyShow : MonoBehaviour
                                     gb.GetComponent<MeshRenderer>().material = others;
                                 }
                             }
-                            else
+                        }
+                            if(!flagUp)
                             {
                                 //Debug.Log("--------------------------------");
                                 //Debug.Log("gbName: " + gb.name.ToString());
                                 //Debug.Log("NodeName: " + NodeName);
+                                //targetNameList
                                 if (gb.name.ToString().Equals(NodeObjectName) == false)
                                 {
                                     Material material = new Material(Shader.Find("Transparent/Diffuse"));
                                     material.color = new Color(1 / 255f, 1 / 255f, 1 / 255f, 10 / 255f);
                                     gb.GetComponent<Renderer>().material = material;
                                 }
-                                //gb.GetComponent<Renderer>().material.color = new Color(1 / 255f, 1 / 255f, 1 / 255f, 10 / 255f);
-                            }
+                            //gb.GetComponent<Renderer>().material.color = new Color(1 / 255f, 1 / 255f, 1 / 255f, 10 / 255f);
                         }
+
+                        
                     }
                 }
             }

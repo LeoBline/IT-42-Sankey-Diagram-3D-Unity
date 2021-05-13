@@ -533,6 +533,7 @@ MonoBehaviour:
   PositionScale: 1
   RatioHighAndArea: 16
   linkMaterial: {fileID: 2100000, guid: 9edef8fe1f355184ca5515a1770d156e, type: 2}
+  GameLineObjectList: []
   Bio: {fileID: 2100000, guid: fc72bffe70881f2479c71347efd9619d, type: 2}
   Elec: {fileID: 2100000, guid: cd6f0c3d7e86c6241ad31a631b0ec3c9, type: 2}
   Hy: {fileID: 2100000, guid: 79500dbda1f231e41ad24785ab189379, type: 2}
@@ -2906,7 +2907,9 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 380.1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5880812906364929360, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
+    - {fileID: 5880812907106056623, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
 --- !u!1 &856284599
 GameObject:
@@ -3313,6 +3316,18 @@ MonoBehaviour:
   player: {fileID: 1874456430}
   mouseSensitivity: 200
   xRotation: 0
+--- !u!114 &989964814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989964810}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d30e7769752d41a28e3833f04e97b69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1009527238
 GameObject:
   m_ObjectHideFlags: 0
@@ -3833,7 +3848,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   panel: {fileID: 650604228}
   buttonObj: {fileID: 1098915332}
-  nodeShow: {fileID: 0}
+  nodeShow: {fileID: 69425008}
   choice: 0
 --- !u!114 &1098915338
 MonoBehaviour:
@@ -3847,7 +3862,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eaa90b0441c9f24c9249cf19024eef4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myCamera: {fileID: 366661948}
 --- !u!850595691 &1117120033
 LightingSettings:
   m_ObjectHideFlags: 0

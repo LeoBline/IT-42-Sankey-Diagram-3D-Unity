@@ -22,7 +22,7 @@ public class NodeShow : MonoBehaviour
     private static NodeShow instance;
     private GameObject tooltipGameObject;
     private List<GameObject> GameObjectList;
-    private List<GameObject> GameLineObjectList;
+    public List<GameObject> GameLineObjectList;
     private GameObject[] barlist;
     private GameObject[] linklist;
     public Material Bio;
@@ -341,7 +341,9 @@ public class NodeShow : MonoBehaviour
         {
             barGameObject.GetComponent<Transform>().position = graphPosition;
             barGameObject.GetComponent<Transform>().localScale = new Vector3(barWidth, barHight, Zposition);
-
+            Change change1 = barGameObject.AddComponent<Change>();
+            change1.setGameObject(barGameObject);
+            change1.setLocal(new Vector3(barWidth, barHight, Zposition));
         }
 
     }
@@ -690,6 +692,7 @@ public class NodeShow : MonoBehaviour
     public List<GameObject> AddGraphLineVisual(string tooltipText, LinksStructure a)
     {
         GameObject lineGameObject = CreateLink(a);
+        lineGameObject.SetActive(false);
         return new List<GameObject>() { lineGameObject };
     }
 

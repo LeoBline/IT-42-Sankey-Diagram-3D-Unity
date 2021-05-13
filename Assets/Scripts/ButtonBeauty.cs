@@ -73,6 +73,11 @@ public class ButtonBeauty : MonoBehaviour
             {
                 nodeShow.Align("justify");
             }
+            if (gameObject.transform.name.ToString().Equals("SaveButton"))
+            {
+                
+            }
+
             choice = true;
         }
         else

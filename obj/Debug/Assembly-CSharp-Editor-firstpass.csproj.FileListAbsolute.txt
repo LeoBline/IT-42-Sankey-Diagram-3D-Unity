@@ -747,3 +747,7 @@
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/obj/Debug/Assembly-CSharp-Editor-firstpass.csproj.CopyComplete
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/obj/Debug/Assembly-CSharp-Editor-firstpass.dll
 /Users/zhuhongcong/IT-42-Sankey-Diagram-3D-Unity/obj/Debug/Assembly-CSharp-Editor-firstpass.pdb
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-Editor-firstpass.csprojAssemblyReference.cache
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-Editor-firstpass.csproj.CoreCompileInputs.cache
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-Editor-firstpass.dll
+E:\TheIT2\IT-42-Sankey-Diagram-3D-Unity\obj\Debug\Assembly-CSharp-Editor-firstpass.pdb

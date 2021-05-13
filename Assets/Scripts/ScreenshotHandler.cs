@@ -44,7 +44,7 @@ public class ScreenshotHandler : MonoBehaviour
             Debug.Log("Save");
             RenderTexture.ReleaseTemporary(renderTexture);
             myCamera.targetTexture = null;
-            myCamera.gameObject.SetActive(false);
+            //myCamera.gameObject.SetActive(false);
         }
        
     }

@@ -692,7 +692,10 @@ public class NodeShow : MonoBehaviour
     public List<GameObject> AddGraphLineVisual(string tooltipText, LinksStructure a)
     {
         GameObject lineGameObject = CreateLink(a);
-        lineGameObject.SetActive(false);
+        if (!DragNode3D.isClick == true && !ClearlyShow.hover == true)
+        {
+            lineGameObject.SetActive(false);
+        }
         return new List<GameObject>() { lineGameObject };
     }
 

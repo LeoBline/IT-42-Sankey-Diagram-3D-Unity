@@ -37,7 +37,7 @@ public class NodeShow : MonoBehaviour
     public int textFontSize = 10;
     [Range((float)0.01, (float)0.99)]
     public float lineAlpha = 0.69f;
-    public bool continulFlag = false;
+    public static bool continulFlag = false;
     public bool dragFlag = false;
     public bool reloadFlag = false;
     public String dragNode;

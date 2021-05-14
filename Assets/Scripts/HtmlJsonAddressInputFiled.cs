@@ -54,7 +54,7 @@ public class HtmlJsonAddressInputFiled : MonoBehaviour
             this.myReader = this.Get(htmlAddress);
             string content = myReader.ReadToEnd();// read in json data as string
             this.JsonReader.GetComponent<JsonReaderTest>().loadHtmlData(content);// use method in JsonReaderTest to read json data into system
-            this.graph.GetComponent<NodeShow>().continulFlag = true;
+            NodeShow.continulFlag = true;
         }
         else// when request file is invalid
         {

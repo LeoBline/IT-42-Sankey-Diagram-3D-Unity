@@ -543,7 +543,6 @@ MonoBehaviour:
   others: {fileID: 2100000, guid: 5dc3223e87aadb7408886e04ec985dac, type: 2}
   textFontSize: 16
   lineAlpha: 0.181
-  continulFlag: 0
   dragFlag: 0
   reloadFlag: 0
   dragNode: 
@@ -2695,6 +2694,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 5880812906316396567, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
+      propertyPath: Jsonreader
+      value: 
+      objectReference: {fileID: 1861260117}
     - target: {fileID: 5880812906364929364, guid: c2380111c48ab2d40924115bc85c4105, type: 3}
       propertyPath: m_SizeDelta.x
       value: 782
@@ -3786,7 +3789,7 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1098915338}
         m_TargetAssemblyTypeName: SaveButtonControl, Assembly-CSharp
-        m_MethodName: Click
+        m_MethodName: OnMouseDown
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4835,6 +4838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73ca3166bcb9cca4c88575d6bd2d30de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  JsonReader: {fileID: 1861260117}
 --- !u!1 &1518341554
 GameObject:
   m_ObjectHideFlags: 0

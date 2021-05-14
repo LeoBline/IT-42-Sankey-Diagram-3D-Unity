@@ -9,6 +9,8 @@ using System.Text;
 
 public class JsonLoadButton : MonoBehaviour
 {
+
+    public GameObject JsonReader;
     // Start is called before the first frame update
     public void Click()
     {
@@ -16,10 +18,10 @@ public class JsonLoadButton : MonoBehaviour
         string filePath = EditorUtility.OpenFilePanel("Load Json File", Application.streamingAssetsPath, "json");
         if (filePath.Length != 0)
         {
-            gameObject.transform.parent.Find("JsonReader").GetComponent<JsonReaderTest>().loadDate(filePath);
+            JsonReader.GetComponent<JsonReaderTest>().loadDate(filePath);
             if (filePath.EndsWith(".json"))
             {
-                gameObject.transform.parent.GetComponent<NodeShow>().continulFlag = true;
+                NodeShow.continulFlag = true;
             }
 
         }

@@ -160,6 +160,7 @@ public class LinksItem
 
 public class JsonReaderTest : MonoBehaviour
 {
+    public GameObject Jsonreader;
     private RectTransform graphContainer;
     public NodesStructure[] NodesStructures;
     public  LinksStructure[] LinksStructures;
@@ -355,9 +356,20 @@ public class JsonReaderTest : MonoBehaviour
             //{
             //    NodesStructures[i].tostring();
             //}
+
+           
+            bool fff = Jsonreader.active;
+            if (fff)
+            {
+                Debug.Log("1111111111111111111111111111111111111111111111111111111111");
+            }
+            Jsonreader.SetActive(true);
             StartCoroutine(WaitForSeconds(3, () =>
             {
-                gameObject.SetActive(false);
+            //    if (gameObject.transform.name.ToString().Equals("JsonReader") == false)
+              //  {
+                    gameObject.SetActive(false);
+                //}
             }));
             
             gameObject.transform.parent.GetComponent<NodeShow>().reloadFlag = true;
@@ -379,7 +391,7 @@ public class JsonReaderTest : MonoBehaviour
             ComputeNodeBreadths();
             computeLinkBreadths();
         
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
     }
     public void ComputeNodeBreadths()
     {

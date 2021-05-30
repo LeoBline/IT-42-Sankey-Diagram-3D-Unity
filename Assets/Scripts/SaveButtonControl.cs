@@ -18,11 +18,11 @@ public class SaveButtonControl : MonoBehaviour
         }
         else
         {
-            Debug.Log(GameObject.Find("Camera"));
-            Camera camera = GameObject.Find("Camera").GetComponent<Camera>();
+            //Debug.Log(GameObject.Find("Camera"));
+            //Camera camera = GameObject.Find("Camera").GetComponent<Camera>();
 
             // camera.clearFlags = CameraClearFlags.Nothing;
-            ScreenshotHandler screenshot = new ScreenshotHandler(camera);
+            ScreenshotHandler screenshot = GameObject.Find("Camera").GetComponent<ScreenshotHandler>();
             screenshot.TakeScreenshot_Static(UnityEngine.Screen.width, UnityEngine.Screen.height); 
             flag = false;
         }

@@ -259,6 +259,7 @@ public class NodeShow : MonoBehaviour
 
                 if (GameLineObjectList != null)
                 {
+                    Debug.Log("DELET");
                     foreach (GameObject line in GameLineObjectList)
                     {
                         Destroy(line);
@@ -275,7 +276,7 @@ public class NodeShow : MonoBehaviour
                     for (int i = 0; i < ClearlyShow.linkList.Count; i++)
                     {
                         Debug.Log("11111" + ClearlyShow.linkList[i]);
-                        GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(58 / 255f, 95 / 255f, 205 / 255f, 1 / 255f);
+                        //GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(255 / 255f, 95 / 255f, 205 / 255f, 1 / 255f);
                     }
                 }
                 if (ClearlyShow.hover == true)

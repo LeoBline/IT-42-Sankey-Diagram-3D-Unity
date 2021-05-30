@@ -18,8 +18,9 @@ public class ScreenshotHandler : MonoBehaviour
     // Update is called once per frame
     private void Awake()
     {
-    
-        myCamera = gameObject.GetComponent<Camera>();
+
+        Debug.Log("Camera "+this.name);
+        myCamera = this.GetComponent<Camera>();
         instance = this;
       
 
@@ -31,6 +32,7 @@ public class ScreenshotHandler : MonoBehaviour
     {
         if (takeScreenshotOnNectFrame)
         {
+            Debug.Log("Camera " + myCamera.gameObject.name);
             myCamera.gameObject.SetActive(true);
             takeScreenshotOnNectFrame = false;
             RenderTexture renderTexture = myCamera.targetTexture;
@@ -54,6 +56,7 @@ public class ScreenshotHandler : MonoBehaviour
     private void TakeScreenshot(int width, int height)
     {
         myCamera.targetTexture = RenderTexture.GetTemporary(width, height, 16);
+        Debug.Log("Star shot "+this.name);
         takeScreenshotOnNectFrame = true; 
     }
     public void TakeScreenshot_Static(int width,int height)

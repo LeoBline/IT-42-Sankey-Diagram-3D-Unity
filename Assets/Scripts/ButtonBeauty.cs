@@ -15,6 +15,10 @@ public class ButtonBeauty : MonoBehaviour
     //false: drag
     public static bool hoverOrdrag = true;
     public bool choice = false;
+
+    public Camera playerCamera;
+    public Camera VerticalCamera;
+
     void Update()
     {
         if(choice == false)
@@ -77,12 +81,13 @@ public class ButtonBeauty : MonoBehaviour
 
                 
             }
-            if (gameObject.transform.name.ToString().Equals("VerticalViewingAngle"))
+            if (gameObject.transform.name.ToString().Equals("VarticalView"))
             {
-                Debug.Log("veerticalview");
-                oldpostion = player.transform.position;
-                player.transform.position = new Vector3(346, 83, -378);
-                
+                playerCamera.gameObject.SetActive(false);
+                VerticalCamera.gameObject.SetActive(true);
+                this.transform.parent.parent.GetComponent<Canvas>().worldCamera = VerticalCamera;
+
+
             }
 
 
@@ -107,6 +112,15 @@ public class ButtonBeauty : MonoBehaviour
             {
                 
                 player.transform.position = oldpostion;
+
+            }
+            if (gameObject.transform.name.ToString().Equals("VarticalView"))
+            {
+                Debug.Log("veerticalview");
+                VerticalCamera.gameObject.SetActive(false);
+                playerCamera.gameObject.SetActive(true);
+                this.transform.parent.parent.GetComponent<Canvas>().worldCamera = playerCamera;
+
 
             }
             choice = false;

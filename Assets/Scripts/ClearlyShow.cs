@@ -44,9 +44,32 @@ public class ClearlyShow : MonoBehaviour
 
     public void Click()
     {
+        
         if(ButtonBeauty.hoverOrdrag == false)
         {
             Recover();
+            
+        }
+        if (gameObject.transform.name.ToString().Equals("HoverButton") && ButtonBeauty.hoverFunction == false)
+        {
+            Debug.Log("recover");
+            
+            GameObject a = GameObject.Find("graphContainer");
+            if (lastNode = GameObject.Find(lastNodeName))
+            {
+                DownTheNode(lastNode);
+                lastNodeName = "";
+            }
+            for (int i=0;i<a.transform.childCount;i++)
+            {
+                if(a.transform.GetChild(i).name.Contains("&"))
+                {
+                    a.transform.GetChild(i).GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.3f);
+                    Debug.Log("Chile "+ a.transform.GetChild(i).name + "   "+ a.transform.GetChild(i).GetComponent<MeshRenderer>().material.color);
+                }
+            }
+            Recover();
+
         }
     }
 

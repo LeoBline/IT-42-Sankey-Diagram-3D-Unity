@@ -23,7 +23,7 @@ public class SaveButtonControl : MonoBehaviour
 
             // camera.clearFlags = CameraClearFlags.Nothing;
             ScreenshotHandler screenshot = new ScreenshotHandler(camera);
-            screenshot.TakeScreenshot_Static(1070, 800); 
+            screenshot.TakeScreenshot_Static(UnityEngine.Screen.width, UnityEngine.Screen.height); 
             flag = false;
         }
     }

@@ -178,33 +178,10 @@ public class NodeShow : MonoBehaviour
         Prefabtest.GetComponent<TextScript>().TextAppearingPosRot1 = gameObject;
         return gameObject;
     }
-    void OnGUI()
-    {
-        // Make a multiline text area that modifies stringToEdit.
-        stringToEdit = GUI.TextArea(new Rect(10, 400, 200, 100), stringToEdit, 200);
-    }
 
 
-    //LAST STAGE
-    //Texture2D GenerateTexture(float barWidth, float barHight, float BarZ)
-    //{
-    //    // 创建一个 128*128 的二维纹理
-    //    var texture = new Texture2D(128, 128, TextureFormat.ARGB32, false);
 
-    //    // 定义一个颜色数组
-    //    var colors = new Color[(int)(barWidth) * (int)(barHight)];
-    //    for (int i = 0; i < colors.Length; ++i)
-    //    {
-    //        colors[i] = RandomColor1();
-    //    }
 
-    //    // 在纹理左下角 32*32 的范围绘制一块黑色区域
-    //    texture.SetPixels(0, 0, 31, 31, colors);
-
-    //    // Apply 使设置生效
-    //    texture.Apply(false, false);
-    //    return texture;
-    //}
 
 
     private void showGraph(NodesStructure[] nodesStructures, LinksStructure[] links)
@@ -298,7 +275,7 @@ public class NodeShow : MonoBehaviour
                     for (int i = 0; i < ClearlyShow.linkList.Count; i++)
                     {
                         Debug.Log("11111" + ClearlyShow.linkList[i]);
-                        GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(58 / 255f, 95 / 255f, 205 / 255f, 255 / 255f);
+                        GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(58 / 255f, 95 / 255f, 205 / 255f, 1 / 255f);
                     }
                 }
                 if (ClearlyShow.hover == true)
@@ -369,19 +346,22 @@ public class NodeShow : MonoBehaviour
         MeshFilter meshFilter = lineobject.AddComponent<MeshFilter>();
         lineobject.AddComponent<MeshRenderer>();
         lineobject.AddComponent<LineRenderer>();
+        lineobject.AddComponent<MeshCollider>();
+        
         // lineobject.transform.SetParent(groupContainer, false);
         LineRenderer line = lineobject.GetComponent<LineRenderer>();
+        lineobject.AddComponent<LineHighLight>();
         Color color = new Color(1, 1, 1, lineAlpha);
         //Debug.Log(ClearlyShow.showLink);
         if (ClearlyShow.showLink)
         {
             lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
-            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+            lineobject.GetComponent<MeshRenderer>().material.color = new Color(0.0f, 1.0f, 1.0f, 0.3f);
         }
         else
         {
             lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
-            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.1f);
+            lineobject.GetComponent<MeshRenderer>().material.color = new Color(0.0f, 1.0f, 1.0f, 0.1f);
         }
         line.alignment = LineAlignment.TransformZ;
         line.sortingOrder = -9;
@@ -420,13 +400,13 @@ public class NodeShow : MonoBehaviour
         Vector3 n4 = new Vector3(x1, y1_3D, z1);
         //future need to change the node width
         DrawLinearCurve(meshFilter, line, n1, n2, n3, n4, width, 10, 10);
-        lineobject.name = SourceNode.name + "&" + TargetNode.name;
+        lineobject.name = SourceNode.name + "&" + TargetNode.name+"/"+link.value;
         lineobject.transform.tag = "Link";
         
         if (ClearlyShow.showLinkName.Contains(lineobject.name.ToString()))
         {
             lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
-            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+            lineobject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.3f);
         }
         return lineobject;
 
@@ -637,6 +617,7 @@ public class NodeShow : MonoBehaviour
         mesh.triangles = indices;
         mesh.RecalculateBounds();
         lineobject.mesh = mesh;
+        lineobject.GetComponent<MeshCollider>().sharedMesh = mesh;
 
 
         //lineRenderer.SetWidth(width,width);

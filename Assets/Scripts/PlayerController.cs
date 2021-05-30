@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     private CharacterController cc;
     public float moveSpeed;
     public float jumpSpeed;
+    private bool verticalFlag = false;
+    int time = 0;
 
     private float horizontalMove, verticalMove,yMove;
     private Vector3 dir;
@@ -20,12 +22,35 @@ public class PlayerController : MonoBehaviour
     }
     private void Update()
     {
+
+        if(verticalFlag)
+        {
+            changepostion();
+            time++;
+            if (time == 3)
+            {
+                verticalFlag = false;
+                time = 0;
+            }
+        }
+        else
+        {
         horizontalMove = Input.GetAxis("Horizontal") * moveSpeed;
         verticalMove = Input.GetAxis("Vertical")* moveSpeed;
         dir = transform.forward * verticalMove + transform.right * horizontalMove;
         cc.Move(dir * Time.deltaTime);
         yMove = Input.GetAxis("Jump") * jumpSpeed;
         cc.Move(new Vector3(0, yMove * Time.deltaTime,0));
-        
+        }
     }
+    public void changepostion()
+    {
+        this.transform.position = new Vector3(333, -150, -373);
+    }
+
+    public void changeFlag()
+    {
+        verticalFlag = true;
+    }
+    
 }

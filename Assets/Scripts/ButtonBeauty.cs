@@ -8,6 +8,8 @@ public class ButtonBeauty : MonoBehaviour
     public GameObject panel;
     public GameObject buttonObj;
     public NodeShow nodeShow;
+    public GameObject player;
+    private Vector3 oldpostion;
     public static bool hoverFunction = false;
     //true: hover
     //false: drag
@@ -72,11 +74,17 @@ public class ButtonBeauty : MonoBehaviour
             if (gameObject.transform.name.ToString().Equals("JustifyButton"))
             {
                 nodeShow.Align("justify");
-            }
-            if (gameObject.transform.name.ToString().Equals("SaveButton"))
-            {
+
                 
             }
+            if (gameObject.transform.name.ToString().Equals("VerticalViewingAngle"))
+            {
+                Debug.Log("veerticalview");
+                oldpostion = player.transform.position;
+                player.transform.position = new Vector3(346, 83, -378);
+                
+            }
+
 
             choice = true;
         }
@@ -94,6 +102,12 @@ public class ButtonBeauty : MonoBehaviour
             {
                 //become drag from hover function
                 hoverFunction = false;
+            }
+            if (gameObject.transform.name.ToString().Equals("VerticalViewingAngle"))
+            {
+                
+                player.transform.position = oldpostion;
+
             }
             choice = false;
         }

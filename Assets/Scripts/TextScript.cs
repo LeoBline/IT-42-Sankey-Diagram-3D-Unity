@@ -26,6 +26,7 @@ public class TextScript : MonoBehaviour
     void Start()
     {
         TextAppearingPosRot = new GameObject();
+        RotationInX = - 60;
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///if You want to show any integer as 3D text then just use below line 
         //int speed=459;

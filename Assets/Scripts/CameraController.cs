@@ -35,4 +35,8 @@ public class CameraController : MonoBehaviour
         }
         
     }
+    public void PlayerVertical()
+    {
+        player.position = new Vector3(0,0,0);
+    }
 }

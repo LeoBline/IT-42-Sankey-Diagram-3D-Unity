@@ -12,7 +12,7 @@ The last semester project Github Link: https://github.com/LeoBline/ICT-42-Sankey
  After Hundreds of hours of serious work in the group,The Finall result:
  ![image](https://github.com/LeoBline/IT-42-Sankey-Diagram-3D-Unity/blob/master/Assets/StreamingAssets/CameraScreenshot.png)
  ![image](https://github.com/LeoBline/IT-42-Sankey-Diagram-3D-Unity/blob/master/Assets/StreamingAssets/Final%20Result.png)
- **The functions of the Button buttons on the left are as follows:**  
+ ### The functions of the Button buttons on the left are as follows:  
  
  
  1. HtmlJson:  
@@ -36,15 +36,30 @@ The last semester project Github Link: https://github.com/LeoBline/ICT-42-Sankey
  10. Hover:  
    When this mode is turned on, when the crosshair points to the Node, this node and its subsequent nodes and the link between them will be highlighted. These highlighted nodes will also rise to allow users to better observe.  And other irrelevant nodes and links will be dim.  
 ---
-**Character control:**  
+### Character control:  
   1. **Up,Down,right,left** key to control player movement. 
   2. **Space** key Raise character position. **L-Ctrl** key Down character position.
   3. **A** key to Show mouse or Turn off display mouse.
 --- 
-**Sankey Diagram interaction**
+### Sankey Diagram interaction
  1. Drag the node with the crosshair or the mouse to drag it.
  2. The corresponding specific data will be displayed when the crosshair or the mouse hovering over the information box in the upper right corner of the node or link.
 ---
-**Facing Problem**
-1.The LineReaderer component used for energy transfer in the project last semester.  But this component cannot customize its three-dimensional width.  Only the width of the line can be set.  This is not applicable to energy transfer in real 3D.
-2.Decide whether to adaptively adjust the size of the bottom area of the nodes.
+### Facing Problem
+1. The LineReaderer component used for energy transfer in the project last semester.  But this component cannot customize its three-dimensional width.  Only the width of the line can be set.  This is not applicable to energy transfer in real 3D.  
+2. Decide whether to adaptively adjust the size of the bottom area of the nodes. 
+
+---
+### Future Direction 
+
+1. In the future, we plan to add more node materials and link materials to display better images.  
+2. Improve the algorithm module to run and import larger enterprise-level data.  
+3. Add more detailed conversion settings (scale, ground size, overall size, etc.).
+---
+### Other Things
+
+If you have any questions, please send an email to keyyy004@mymail.unisa.edu.au. Or submit an issue.  Our team will reply as soon as possible if we have time  (Maybe...).  
+
+# Thanks for your use. 
+
+## XD ！！！！！！！！！

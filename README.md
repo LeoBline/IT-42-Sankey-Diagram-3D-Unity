@@ -60,6 +60,6 @@ The last semester project Github Link: https://github.com/LeoBline/ICT-42-Sankey
 
 If you have any questions, please send an email to keyyy004@mymail.unisa.edu.au. Or submit an issue.  Our team will reply as soon as possible if we have time  (Maybe...).  
 
-# Thanks for your use. 
+# Thank you for using. 
 
 ## XD ！！！！！！！！！

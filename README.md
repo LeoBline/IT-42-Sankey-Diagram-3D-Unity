@@ -12,11 +12,11 @@ The last semester project Github Link: https://github.com/LeoBline/ICT-42-Sankey
  After Hundreds of hours of serious work in the group,The Finall result:
  ![image](https://github.com/LeoBline/IT-42-Sankey-Diagram-3D-Unity/blob/master/Assets/StreamingAssets/CameraScreenshot.png)
  ![image](https://github.com/LeoBline/IT-42-Sankey-Diagram-3D-Unity/blob/master/Assets/StreamingAssets/Final%20Result.png)
- The functions of the Button buttons on the left are as follows:  
- 1.HtmlJson:
-   A Html address input box is displayed.  After entering Html for confirmation, the visual graph of the imported data can be displayed.
- 2.LocalJson:
-   A file selection window pops up.  Select the imported json data here.  After confirmation, the corresponding visual image will be displayed.
+ >The functions of the Button buttons on the left are as follows:  
+ <br>1.HtmlJson:
+   A Html address input box is displayed.  After entering Html for confirmation, the visual graph of the imported data can be displayed.</br>
+  <br>2.LocalJson:
+   A file selection window pops up.  Select the imported json data here.  After confirmation, the corresponding visual image will be displayed. </br>
  3.Justify:
    Change the display mode of the visual Sankey diagram.  In this mode, the beginning and end of each energy transmission are on one column.
  4.Center:

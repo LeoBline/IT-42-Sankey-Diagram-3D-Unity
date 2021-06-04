@@ -12,7 +12,7 @@ The last semester project Github Link: https://github.com/LeoBline/ICT-42-Sankey
  After Hundreds of hours of serious work in the group,The Finall result:
  ![image](https://github.com/LeoBline/IT-42-Sankey-Diagram-3D-Unity/blob/master/Assets/StreamingAssets/CameraScreenshot.png)
  ![image](https://github.com/LeoBline/IT-42-Sankey-Diagram-3D-Unity/blob/master/Assets/StreamingAssets/Final%20Result.png)
- The functions of the Button buttons on the left are as follows:
+ The functions of the Button buttons on the left are as follows:  
  1.HtmlJson:
    A Html address input box is displayed.  After entering Html for confirmation, the visual graph of the imported data can be displayed.
  2.LocalJson:

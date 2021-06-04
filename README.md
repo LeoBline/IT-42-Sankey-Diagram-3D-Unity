@@ -15,7 +15,7 @@ The last semester project Github Link: https://github.com/LeoBline/ICT-42-Sankey
  The functions of the Button buttons on the left are as follows:  
  >
  <br>1.HtmlJson:
-   >>A Html address input box is displayed.  After entering Html for confirmation, the visual graph of the imported data can be displayed.</br>
+   A Html address input box is displayed.  After entering Html for confirmation, the visual graph of the imported data can be displayed.</br>
   <br>2.LocalJson:
    A file selection window pops up.  Select the imported json data here.  After confirmation, the corresponding visual image will be displayed. </br>
  3.Justify:

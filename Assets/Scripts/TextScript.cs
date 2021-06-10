@@ -26,6 +26,7 @@ public class TextScript : MonoBehaviour
     void Start()
     {
         TextAppearingPosRot = new GameObject();
+        TextAppearingPosRot.AddComponent<Image>();
         RotationInX = - 73;
         //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///if You want to show any integer as 3D text then just use below line 
@@ -719,7 +720,7 @@ public class TextScript : MonoBehaviour
 
             }
         }
-
+        GameObject.Destroy(TextAppearingPosRot);
     }
 
     // Update is called once per frame

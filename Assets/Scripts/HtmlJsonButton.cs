@@ -2,12 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+/**
+ * Class Name :  
+ *     HtmlJsonButton
+ *     
+ * Author: Boyan Wei
+ * 
+ * Class Description : 
+ *     to control the url input window disappear and appear.
+ */
 
 public class HtmlJsonButton : MonoBehaviour
 {
     public GameObject Diague;
     public Button button;
-    // Start is called before the first frame update
     void Start()
     {
         Diague.SetActive(false);
@@ -19,17 +27,18 @@ public class HtmlJsonButton : MonoBehaviour
     {
     }
 
-    //Call when click
+    /// <summary>
+    /// Function Name: onClick
+    /// Description: Call when click htmlJsonButton, to control the url input window disappear and appear
+    /// </summary>
     void onClick()
     {
-        if (Diague.active == true)
+        if (Diague.active == true) // Click to close Dialog
         {
             Diague.SetActive(false);
-            Debug.Log("Click to close Dialog");
         }
-        else
+        else // Click to open Dialog
         {
-            Debug.Log("Click to open Dialog");
             Diague.SetActive(true);
         }
 

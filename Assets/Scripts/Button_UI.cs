@@ -2,19 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
-
-/**
- * Class Name :  
- *     Button_UI
-
- * Class Description : 
- *     This class has multiple attributes for monitoring mouse operations which 
- *     is type of Action. They can call corresponding methods. At current stage, 
- *     only implement methods to meet the functional requirements of hover on are 
- *     expanded. More mouse action attributes are set for scalability of the software, 
- *     and this category can be expanded when there is more need to monitor mouse 
- *     actions in the future. 
- */
+/// <summary>
+/// Class Name: Button_UI
+/// Author Nmae: Boyan Wei
+/// Class Function: This class has multiple attributes for monitoring mouse operations which 
+/// is type of Action.They can call corresponding methods. At current stage,
+/// only implement methods to meet the functional requirements of hover on are expanded. 
+/// More mouse action attributes are set for scalability of the software,
+/// and this category can be expanded when there is more need to monitor mouse actions in the future.  
+/// </summary>
 public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler, IPointerDownHandler, IPointerUpHandler
 {
     //Some attributions of Button_UI
@@ -32,7 +28,10 @@ public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public Action MouseUpdate = null;
     public Action<PointerEventData> OnPointerClickFunc;
 
-    //Three kinds of mouse hover behaviour
+    /// <summary>
+    /// enum name: HoverBehaviour
+    /// description: Three kinds of mouse hover behaviour
+    /// </summary>
     public enum HoverBehaviour
     {
         Custom,
@@ -65,7 +64,7 @@ public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
     public CursorManager.CursorType cursorMouseOver, cursorMouseOut;
 #endif
 
-    // =========================================methods about the button=============================================================
+ // =============================================methods about the button=============================================================
     public virtual void OnPointerEnter(PointerEventData eventData)
     {
         if (internalOnPointerEnterFunc != null) internalOnPointerEnterFunc();
@@ -119,7 +118,7 @@ public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         if (MouseUpFunc != null) MouseUpFunc();
     }
 
-    //================== implement default methods of GameObject=============================================================================================
+//================== implement default methods of GameObject=============================================================================================
     void Update()
     {
         if (mouseOver)
@@ -154,15 +153,12 @@ public class Button_UI : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
 #endif
     }
 
-    /*
-    * Class name: 
-    *       InterceptActionHandler
-    * 
-    * CLass description: 
-    *       This class is using for Tutorial, not using in the final project.
-    *       The function of the class is intercepting/listening a button action temporarily.
-    *       Also, it can disable specific button's function.
-    * */
+    /// <summary>
+    /// Class name: InterceptActionHandler
+    /// CLass description: This class is using for Tutorial, not using in the final project.
+    /// The function of the class is intercepting / listening a button action temporarily.
+    /// Also, it can disable specific button's function.
+    /// </summary>
     public class InterceptActionHandler
     {
 

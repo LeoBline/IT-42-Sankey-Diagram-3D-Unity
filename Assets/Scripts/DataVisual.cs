@@ -23,13 +23,6 @@ public class DateVisual : MonoBehaviour
         LinksStructure[] linksStructures = a.GetComponent<JsonReaderTest>().LinksStructures;
     }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-
-    //}
-
-
     /**
     * Nested Class: 
     *       Window_Graph

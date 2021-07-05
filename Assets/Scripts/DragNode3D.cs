@@ -1,32 +1,45 @@
 ﻿using UnityEngine;
+/**
+ * Class name: 
+ *      DragNode
+ *      
+ * Author: Yanxi Ke
+ * 
+ * Class description:
+ *      This class improve drag function in 3D game scene
+ */
 
 public class DragNode3D : MonoBehaviour
 {
 
     public static bool isClick = false;
-    private Vector3 mOffset;
+    //Difference from previous position
+    private Vector3 mOffset;
     private float mZCoord;
-    void OnMouseDown()
+    //when the mous down on the node
+    void OnMouseDown()
     {
         mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-        //store offset = Gameobject world position - mouse world position
-        mOffset = gameObject.transform.position - GetMouseWorldPos();
+        //store offset = Gameobject world position - mouse world position
+        mOffset = gameObject.transform.position - GetMouseWorldPos();
         isClick = true;
     }
-    private Vector3 GetMouseWorldPos()
+    //get mouse position
+    private Vector3 GetMouseWorldPos()
     {
         Vector3 mousePoint = Input.mousePosition;
-        //z coordinate of game object on screen
-        mousePoint.z = mZCoord;
+        //z coordinate of game object on screen
+        mousePoint.z = mZCoord;
         return Camera.main.ScreenToWorldPoint(mousePoint);
     }
-    void OnMouseDrag()
+    // update the position
+    void OnMouseDrag()
     {
 
         transform.position = GetMouseWorldPos() + mOffset;
     }
-
-    private void OnMouseUp()
+    // status flag
+    private void OnMouseUp()
     {
         isClick = false;
     }

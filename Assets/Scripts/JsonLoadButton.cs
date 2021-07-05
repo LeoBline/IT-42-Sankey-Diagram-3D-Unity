@@ -6,12 +6,22 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.UIElements;
 using System.Text;
-
+/**
+ * Class Name :  
+ *     JsonLoadButton
+ *     
+ * Author: Boyan Wei
+ * 
+ * Class Description : 
+ *     to control the local storage window open
+ */
 public class JsonLoadButton : MonoBehaviour
 {
-
     public GameObject JsonReader;
-    // Start is called before the first frame update
+    /// <summary>
+    /// Function Name: Click
+    /// Description: Call when click JsonLoadButton, open the local storage window and let user import Json data from the local storage
+    /// </summary>
     public void Click()
     {
         //open file panel

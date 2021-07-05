@@ -10,7 +10,8 @@ using System;
 /**
  * Class Name :  
  *     HtmlJsonAddressInputFiled
-
+ *     
+ * Author: Yidan Lou
  * Class Description : 
  *     This class will get Json data from website through URL. 
  *     After getting data, it will store the Json data into the system data structure.
@@ -22,7 +23,7 @@ public class HtmlJsonAddressInputFiled : MonoBehaviour
     public GameObject graph;
     public string htmlAddress = "";
     public System.IO.StreamReader myReader;
-    
+
     private void Awake()
     {
         var input = this.GetComponent<InputField>();
@@ -32,6 +33,7 @@ public class HtmlJsonAddressInputFiled : MonoBehaviour
         }
     }
 
+    //Build the connect with http service
     private System.IO.StreamReader Get(string url)
     {
         HttpWebRequest request;
@@ -49,7 +51,7 @@ public class HtmlJsonAddressInputFiled : MonoBehaviour
     private void OnEndEdit(string arg0)
     {
         this.htmlAddress = this.GetComponent<InputField>().text;
-        if (this.htmlAddress != "" && this.htmlAddress.EndsWith(".json"))// when request file is valid
+        if (this.htmlAddress != "" && this.htmlAddress != null && this.htmlAddress.EndsWith(".json"))// when request file is valid
         {
             this.myReader = this.Get(htmlAddress);
             string content = myReader.ReadToEnd();// read in json data as string

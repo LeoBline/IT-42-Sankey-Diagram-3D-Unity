@@ -10,19 +10,19 @@ public class ScreenshotHandler : MonoBehaviour
     private Camera myCamera;
     private bool takeScreenshotOnNectFrame;
     // Start is called before the first frame update
-  public ScreenshotHandler(Camera camera  )
+    public ScreenshotHandler(Camera camera)
     {
         myCamera = camera;
-      
+
     }
     // Update is called once per frame
     private void Awake()
     {
 
-        Debug.Log("Camera "+this.name);
+        Debug.Log("Camera " + this.name);
         myCamera = this.GetComponent<Camera>();
         instance = this;
-      
+
 
     }
     /**
@@ -42,7 +42,7 @@ public class ScreenshotHandler : MonoBehaviour
             byte[] byteArray = renderResult.EncodeToPNG();
 
             string filePath = UnityEditor.EditorUtility.SaveFilePanel("Load Json File", Application.streamingAssetsPath, "CameraScreenshot.png", "png");
-            if (filePath!="")
+            if (filePath != "")
             {
                 System.IO.File.WriteAllBytes(filePath, byteArray);
             }
@@ -51,18 +51,18 @@ public class ScreenshotHandler : MonoBehaviour
             myCamera.targetTexture = null;
             //myCamera.gameObject.SetActive(false);
         }
-       
+
     }
     private void TakeScreenshot(int width, int height)
     {
         myCamera.targetTexture = RenderTexture.GetTemporary(width, height, 16);
-        Debug.Log("Star shot "+this.name);
-        takeScreenshotOnNectFrame = true; 
+        Debug.Log("Star shot " + this.name);
+        takeScreenshotOnNectFrame = true;
     }
-    public void TakeScreenshot_Static(int width,int height)
+    public void TakeScreenshot_Static(int width, int height)
     {
         instance.TakeScreenshot(width, height);
     }
 
-   
+
 }

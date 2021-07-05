@@ -26,12 +26,6 @@ public class CreateJsReader : Editor
         jsreader.name = "JsonReader";
         jsreader.AddComponent<JsonReaderTest>();
     }
-
-    //// Update is called once per frame
-    //void Update()
-    //{
-        
-    //}
 }
 
 /**

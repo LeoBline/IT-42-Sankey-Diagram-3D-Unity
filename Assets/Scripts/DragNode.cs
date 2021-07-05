@@ -7,6 +7,8 @@ using UnityEngine.EventSystems;
  * Class name: 
  *      DragNode
  *      
+ * Author: Yanxi Ke
+ * 
  * Class description:
  *      This class implements IDragHandler interface to obtain the
  *      function of monitoring the coordinates before and after the
@@ -62,8 +64,6 @@ public class DragNode : MonoBehaviour, IDragHandler
         RectTransformUtility.ScreenPointToLocalPointInRectangle(thisRect.parent.GetComponent<RectTransform>(), clickPosition, GameObject.Find("Camera").GetComponent<Camera>(), out result);
         result += thisRect.sizeDelta / 2;
 
-
-        /*Debug.Log(a.name+" "+eventData);*/
         //set the drag border.
         drag.GetComponent<RectTransform>().localPosition = eventData.position;
         float x = result.x, y = result.y;
@@ -77,7 +77,6 @@ public class DragNode : MonoBehaviour, IDragHandler
         a.y1 = y;
         a.x1 = x;
 
-        //Debug.Log(a.x0 + " " + a.x1 + " " + a.y0 + " " + a.y1);
         nodeshow.GetComponent<NodeShow>().dragFlag = true;
         nodeshow.GetComponent<NodeShow>().dragNode = this.name.Substring(5);
     }

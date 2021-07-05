@@ -3,7 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-
+/**
+ * Class name: 
+ *      DragNode
+ *      
+ * Author: Yanxi Ke
+ * 
+ * Class description:
+ *      This class was used a algorithim(Bezier curve) to draw link line in 2D version.
+ *      Simply, a Bezier curve is the simultaneous difference of multiple line segments
+ */
 //简单来说,贝塞尔曲线就是对多个线段同时做差值
 public class DrawLine : MonoBehaviour
 {
@@ -11,7 +20,6 @@ public class DrawLine : MonoBehaviour
     public LineRenderer lineReaderer;
     public GameObject a;
     private RectTransform graphContainer;
-    // Start is called before the first frame update
     private int numPoints = 200;
     private Vector2[] positions = new Vector2[201];
     private int curveCount = 1;
@@ -70,15 +78,7 @@ public class DrawLine : MonoBehaviour
             
 
 
-        }
-/*        for(int m = 0; m < positions.Length; m++)
-        {
-            if (m + 1 < positions.Length)
-            {
-                CreateDotConnection(positions[m], positions[m + 1],width);
-            }
-        }*/
-       
+        }     
         
     }
     private void CreateDotConnection(Vector2 dotPositionA, Vector2 dotPositionB,float width)
@@ -121,10 +121,7 @@ public class DrawLine : MonoBehaviour
         p += 3 * u * tt * p2;
         p += ttt * p3;
         return p;
-
     }
- 
-
 }
 
 

@@ -1,25 +1,25 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Class Name: ClearlyShow
+/// Author: Boyan Wei
+/// Description: This class is to control the cursor appear and disappear.
+/// When the cursor is hiden, the view prespective can move with the cursor.
+/// </summary>
 public class Controlcursor : MonoBehaviour
 {
-    
     public static bool Cursorvisiable = true;
-    // Start is called before the first frame update
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
+    }
     void Update()
     {
-    
         //Controlling the move view function of the cursor
         if (Input.GetKeyDown(KeyCode.A))
         {
-            if(Cursorvisiable == false)
+            if (Cursorvisiable == false)
             {
                 Cursor.visible = true;
                 Debug.Log("visiable");

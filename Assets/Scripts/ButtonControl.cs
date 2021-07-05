@@ -2,7 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+/// <summary>
+/// Class Name: ButtonControl
+/// Author: Boyan Wei
+/// Description: use button click, to control the Sankey diaram display in 4 modes.
+/// </summary>
 public class ButtonControl : MonoBehaviour
 {
     public Button justify;
@@ -10,8 +14,11 @@ public class ButtonControl : MonoBehaviour
     public Button left;
     public Button center;
     public Button butObject;
-    // Start is called before the first frame update
-    
+    /// <summary>
+    /// Function Name: Click
+    /// Description: If one of button in RightButton, JustifyButton, CenterButton and LefButton is clicked,
+    ///             the display of the Sankey diagram will change into the same align mode.
+    /// </summary>
     public void Click()
     {
         string buttonName = butObject.name.ToString();

@@ -5,7 +5,12 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
-
+/// <summary>
+/// Class Name: NodeShow
+/// Author: Hongcong Zhu, Yanxi Ke, Yidan Lou
+/// Description: This class can be regarded as the controller in MVC architecture.
+/// It manipulate the data from the nodes instance array, and display the node on Unity game scene.
+/// </summary>
 public class NodeShow : MonoBehaviour
 {
     [SerializeField] private Sprite dotSprite;
@@ -45,14 +50,10 @@ public class NodeShow : MonoBehaviour
     private double updateTime = 0;
     private NodesStructure[] nodesStructures;
     private LinksStructure[] linksStructures;
+
     // Start is called before the first frame update
     void Start()
     {
-
-        //GameObject obj1 = GameObject.CreatePrimitive(PrimitiveType.Cube);
-        ////设置物体的位置Vector3三个参数分别代表x,y,z的坐标数
-        //obj1.transform.position = new Vector3(1, 1, 1);
-        //obj1.transform.localScale = new Vector3(500,2,500);
         AddTag("Cube", gameObject);
         AddTag("Link", gameObject);
         Debug.Log(JsonReaderObject.GetComponent<JsonReaderTest>().align);
@@ -142,6 +143,8 @@ public class NodeShow : MonoBehaviour
     {
         GameObject gameObject = GameObject.CreatePrimitive(PrimitiveType.Cube);
         gameObject.GetComponent<MeshRenderer>().material = null;
+        //Set coal, Hy and other materials in the material library of unity
+        //Use the contain method to map the name to the specific cube
         if (Node.name.Contains("Coal"))
         {
             gameObject.GetComponent<MeshRenderer>().material = Coal;
@@ -167,8 +170,10 @@ public class NodeShow : MonoBehaviour
             gameObject.GetComponent<MeshRenderer>().material = others;
         }
         gameObject.name = Node.name + "@" + Node.value.ToString();
+        //Use this method to facilitate subsequent string splitting operations
         gameObject.transform.tag = "Cube";
         gameObject.transform.SetParent(groupContainer, false);
+        //Add the corresponding script to the cube
         gameObject.AddComponent<DragNode3D>();
         gameObject.AddComponent<ClearlyShow>();
         GameObject prototype = Resources.Load("3DTextPrefab") as GameObject;
@@ -178,11 +183,6 @@ public class NodeShow : MonoBehaviour
         Prefabtest.GetComponent<TextScript>().TextAppearingPosRot1 = gameObject;
         return gameObject;
     }
-
-
-
-
-
 
     private void showGraph(NodesStructure[] nodesStructures, LinksStructure[] links)
     {
@@ -225,8 +225,10 @@ public class NodeShow : MonoBehaviour
 
     private void Update()
     {
+        //when change the display mode or rebuild the graph
         if (continulFlag == true)
         {
+            //delete something don't need
             for (int i = 0; i < transform.childCount; i++)
             {
                 if (transform.GetChild(i).name.Contains("(Clone)"))
@@ -242,6 +244,7 @@ public class NodeShow : MonoBehaviour
 
             }
 
+            //wait some time to restart
             StartCoroutine(WaitForSeconds(0.05f, () =>
             {
                 Start();
@@ -254,6 +257,8 @@ public class NodeShow : MonoBehaviour
         }
         else
         {
+
+            ///when drag the node it will update the link .
             if (DragNode3D.isClick == true || ClearlyShow.hover == true)
             {
 
@@ -269,6 +274,7 @@ public class NodeShow : MonoBehaviour
                         GameLineObjectList.AddRange(AddGraphLineVisual("Value:" + (float)linksStructures[i].value, linksStructures[i]));
                     }
                 }
+                //debug test
                 if (ClearlyShow.hover == true)
                 {
 
@@ -279,6 +285,7 @@ public class NodeShow : MonoBehaviour
                         //GameObject.Find(ClearlyShow.linkList[i]).GetComponent<Renderer>().material.color = new Color(255 / 255f, 95 / 255f, 205 / 255f, 1 / 255f);
                     }
                 }
+                //change the flag 
                 if (ClearlyShow.hover == true)
                 {
                     ClearlyShow.hover = false;
@@ -340,15 +347,18 @@ public class NodeShow : MonoBehaviour
 
 
 
+    //create link method input the link data
     private GameObject CreateLink(LinksStructure link)
     {
         GameObject lineobject = new GameObject("line");
         lineobject.transform.parent = this.transform;
+        // create mesh to  show the link
+        //add some component 
         MeshFilter meshFilter = lineobject.AddComponent<MeshFilter>();
         lineobject.AddComponent<MeshRenderer>();
         lineobject.AddComponent<LineRenderer>();
         lineobject.AddComponent<MeshCollider>();
-        
+
         // lineobject.transform.SetParent(groupContainer, false);
         LineRenderer line = lineobject.GetComponent<LineRenderer>();
         lineobject.AddComponent<LineHighLight>();
@@ -372,38 +382,33 @@ public class NodeShow : MonoBehaviour
         line.SetColors(new Color(1, 1, 1, lineAlpha), new Color(1, 1, 1, lineAlpha));
         string SourceNodeName = link.SourceNode.name + "@" + link.SourceNode.value;
         GameObject SourceNode = GameObject.Find(SourceNodeName);
-        float y0_3D = SourceNode.transform.position.y+ (float)link.y0_3D + (float)link.width / 2   - SourceNode.transform.localScale.y/2;
+        float y0_3D = SourceNode.transform.position.y + (float)link.y0_3D + (float)link.width / 2 - SourceNode.transform.localScale.y / 2;
         //float y0_3D = (float)link.y0_3D + (float)link.width / 2;
         string TargetNodeName = link.TargetNode.name + "@" + link.TargetNode.value;
         GameObject TargetNode = GameObject.Find(TargetNodeName);
-        float y1_3D = TargetNode.transform.position.y  + (float)link.y1_3D+(float)link.width / 2 - TargetNode.transform.localScale.y/2;
+        float y1_3D = TargetNode.transform.position.y + (float)link.y1_3D + (float)link.width / 2 - TargetNode.transform.localScale.y / 2;
         //float y1_3D = (float)link.y1_3D + (float)link.width / 2;
         float width = (float)link.width;
+        //Specific values of left and right up and down
 
         float z0 = (float)(SourceNode.transform.position.z) * PositionScale - 10 / 2;
 
         float x0 = (float)(SourceNode.transform.position.x) * PositionScale + 10 / 2;
         float z1 = (float)(TargetNode.transform.position.z) * PositionScale - 10 / 2;
         float x1 = (float)(TargetNode.transform.position.x) * PositionScale - 10 / 2;
-
-
-        //float z0 = (float)(link.SourceNode.y0 + ((float)link.SourceNode.y1 - (float)link.SourceNode.y0) / 2) * PositionScale - 10 / 2;
-
-        //float x0 = (float)(link.SourceNode.x0 + ((float)link.SourceNode.x1 - (float)link.SourceNode.x0) / 2) * PositionScale + 10 / 2;
-        //float z1 = (float)(link.TargetNode.y0 + ((float)link.TargetNode.y1 - (float)link.TargetNode.y0) / 2) * PositionScale - 10 / 2;
-        //float x1 = (float)(link.TargetNode.x0 + ((float)link.TargetNode.x1 - (float)link.TargetNode.x0) / 2) * PositionScale - 10 / 2;
-        //Debug.Log("x0" + x0 + "y0" + y0_3D + "z0" + z0 + "x1" + x1 + "y1" + y1_3D + "z1" + z1);
         //n1 is left vector
+        //Bezier curve control point
         Vector3 n1 = new Vector3(x0, y0_3D, z0);
         Vector3 n2 = new Vector3((x0 + x1) / 2, y0_3D, (z0 + z1) / 2);
         //n4 is right vector
         Vector3 n3 = new Vector3((x0 + x1) / 2, y1_3D, (z0 + z1) / 2);
         Vector3 n4 = new Vector3(x1, y1_3D, z1);
-        //future need to change the node width
+        //acconding the data to draw the link
         DrawLinearCurve(meshFilter, line, n1, n2, n3, n4, width, 10, 10);
-        lineobject.name = SourceNode.name + "&" + TargetNode.name+"/"+link.value;
+        lineobject.name = SourceNode.name + "&" + TargetNode.name + "/" + link.value;
         lineobject.transform.tag = "Link";
-        
+
+        // when hover node it need to change the link color.
         if (ClearlyShow.showLinkName.Contains(lineobject.name.ToString()))
         {
             lineobject.GetComponent<MeshRenderer>().material = linkMaterial;
@@ -415,6 +420,9 @@ public class NodeShow : MonoBehaviour
 
     private float getMinLength(NodesStructure[] nodes)
     {
+        //The method dynamically calculates the maximum base area x value
+        //Algorithm idea: Calculate the number of elements in the column with the most elements
+        //The column spacing with the most elements in the 2d version is fixed
         int max = 0;
         for (int i = 0; i < nodes.Length; i++)
         {
@@ -458,6 +466,7 @@ public class NodeShow : MonoBehaviour
                 node1.Add(nodes[i]);
             }
         }
+        //Y0 of the second element of the column with the most elements-y1 of the first element
         float ymin = 100;
         float ymax = 100;
         for (int i = 0; i < node1.Count; i++)
@@ -474,7 +483,8 @@ public class NodeShow : MonoBehaviour
                 ymax = (float)node1[i].y0;
             }
         }
-
+        //When x is greater than the spacing, there must be a bottom area overlap
+        //So the x value of the required bottom area is the spacing
         return (float)(ymax - ymin);
 
 
@@ -484,13 +494,19 @@ public class NodeShow : MonoBehaviour
     private void DrawLinearCurve(MeshFilter lineobject, LineRenderer lineRenderer, Vector3 position1, Vector3 position2, Vector3 position3, Vector3 position4, float width, float LDepth, float RDepth)
     {
         List<Vector3> curveDataList = new List<Vector3>();
+        //input the bezier data to the datalist
         curveDataList.AddRange(Bezier_CubicCurvePoints(position1, position2, position3, position4, splitCount));
 
+        //Vertex data.
         int numPoints = curveDataList.Count * 8;
         Vector3[] verts = new Vector3[numPoints];
+        // set the uv  but we dont use the texture.
+        //the RDepth and LDepth is 10
         Vector2[] uvs = new Vector2[numPoints];
         float widthInterval = (RDepth - LDepth) / (curveDataList.Count - 1);
+        //this is use in another type of uv 
         float curvelength = 0;
+
         for (int i = 0; i < curveDataList.Count - 1; i++)
         {
             curvelength += Vector3.Distance(curveDataList[i], curveDataList[i + 1]);
@@ -498,115 +514,71 @@ public class NodeShow : MonoBehaviour
 
         // Vertex DATA Setup
         float u1, u2, covered = 0;
+        int vertexSpace = 8;
         for (int i = 0; i < curveDataList.Count - 1; i++)
         {
             float meshLDepth = LDepth + i * widthInterval;
             float meshRDepth = LDepth + (i + 1) * widthInterval;
-            verts[i * 8 + 0] = curveDataList[i];
-            verts[i * 8 + 1] = curveDataList[i] + Vector3.down * width;
-            verts[i * 8 + 2] = curveDataList[i + 1];
-            verts[i * 8 + 3] = curveDataList[i + 1] + Vector3.down * width;
+            verts[i * vertexSpace + 0] = curveDataList[i];
+            verts[i * vertexSpace + 1] = curveDataList[i] + Vector3.down * width;
+            verts[i * vertexSpace + 2] = curveDataList[i + 1];
+            verts[i * vertexSpace + 3] = curveDataList[i + 1] + Vector3.down * width;
 
-            verts[i * 8 + 4] = curveDataList[i] + Vector3.forward * meshLDepth;
-            verts[i * 8 + 5] = curveDataList[i + 1] + Vector3.forward * meshRDepth;
+            verts[i * vertexSpace + 4] = curveDataList[i] + Vector3.forward * meshLDepth;
+            verts[i * vertexSpace + 5] = curveDataList[i + 1] + Vector3.forward * meshRDepth;
 
-            verts[i * 8 + 6] = curveDataList[i] + Vector3.forward * meshLDepth + Vector3.down * width;
-            verts[i * 8 + 7] = curveDataList[i + 1] + Vector3.forward * meshRDepth + Vector3.down * width;
+            verts[i * vertexSpace + 6] = curveDataList[i] + Vector3.forward * meshLDepth + Vector3.down * width;
+            verts[i * vertexSpace + 7] = curveDataList[i + 1] + Vector3.forward * meshRDepth + Vector3.down * width;
 
-            //uvs[i * 8 + 0] = Vector3.zero;
-            //uvs[i * 8 + 1] = Vector3.zero;
-            //uvs[i * 8 + 2] = Vector3.zero;
-            //uvs[i * 8 + 3] = Vector3.zero;
-            //uvs[i * 8 + 4] = Vector3.zero;
-            //uvs[i * 8 + 5] = Vector3.zero;
-            //uvs[i * 8 + 6] = Vector3.zero;
-            //uvs[i * 8 + 7] = Vector3.zero;
+            
             u1 = (curveDataList[i].x - curveDataList[0].x) / (curveDataList[curveDataList.Count - 1].x - curveDataList[0].x);
             u2 = (curveDataList[i + 1].x - curveDataList[0].x) / (curveDataList[curveDataList.Count - 1].x - curveDataList[0].x);
-            uvs[i * 8 + 0] = new Vector2(u1, 1);
-            uvs[i * 8 + 1] = new Vector2(u1, 0);
-            uvs[i * 8 + 2] = new Vector2(u2, 1);
-            uvs[i * 8 + 3] = new Vector2(u2, 0);
-            uvs[i * 8 + 4] = new Vector2(u1, 0);
-            uvs[i * 8 + 5] = new Vector2(u2, 0);
-            //switch (uvType)
-            //{
-            //    case UVType.None:
-
-            //        break;
-            //    case UVType.VertexBased:
-            //        uvs[i * 8 + 0] = verts[i * 8 + 0];
-            //        uvs[i * 8 + 1] = verts[i * 8 + 1];
-            //        uvs[i * 8 + 2] = verts[i * 8 + 2];
-            //        uvs[i * 8 + 3] = verts[i * 8 + 3];
-            //        uvs[i * 8 + 4] = new Vector2(verts[i * 8 + 4].x, verts[i * 8 + 4].z);
-            //        uvs[i * 8 + 5] = new Vector2(verts[i * 8 + 5].x, verts[i * 8 + 5].z);
-            //        break;
-            //    case UVType.AxisBased:
-            //        u1 = (curveDataList[i].x - curveDataList[0].x) / (curveDataList[curveDataList.Count - 1].x - curveDataList[0].x);
-            //        u2 = (curveDataList[i + 1].x - curveDataList[0].x) / (curveDataList[curveDataList.Count - 1].x - curveDataList[0].x);
-            //        uvs[i * 8 + 0] = new Vector2(u1, 1);
-            //        uvs[i * 8 + 1] = new Vector2(u1, 0);
-            //        uvs[i * 8 + 2] = new Vector2(u2, 1);
-            //        uvs[i * 8 + 3] = new Vector2(u2, 0);
-            //        uvs[i * 8 + 4] = new Vector2(u1, 0);
-            //        uvs[i * 8 + 5] = new Vector2(u2, 0);
-            //        break;
-            //    case UVType.LengthBased:
-            //        u1 = covered / curvelength;
-            //        covered += Vector3.Distance(curveDataList[i], curveDataList[i + 1]);
-            //        u2 = covered / curvelength;
-            //        uvs[i * 8 + 0] = new Vector2(u1, 1);
-            //        uvs[i * 8 + 1] = new Vector2(u1, 0);
-            //        uvs[i * 8 + 2] = new Vector2(u2, 1);
-            //        uvs[i * 8 + 3] = new Vector2(u2, 0);
-            //        uvs[i * 8 + 4] = new Vector2(u1, 0);
-            //        uvs[i * 8 + 5] = new Vector2(u2, 0);
-
-            //        break;
-            //    default:
-            //        break;
-            //}
+            uvs[i * vertexSpace + 0] = new Vector2(u1, 1);
+            uvs[i * vertexSpace + 1] = new Vector2(u1, 0);
+            uvs[i * vertexSpace + 2] = new Vector2(u2, 1);
+            uvs[i * vertexSpace + 3] = new Vector2(u2, 0);
+            uvs[i * vertexSpace + 4] = new Vector2(u1, 0);
+            uvs[i * vertexSpace + 5] = new Vector2(u2, 0);
         }
 
         // Indices Setup
         int numTris = numPoints - 2 - 2;
         int[] indices = new int[numTris * 3];
-        //Debug.Log(curveDataList.Count);
-
+        int indiceSpace = 24;
+        //detail trangle data
         for (int i = 0; i < curveDataList.Count - 1; i++)
         {
-            indices[i * 24 + 0] = i * 8 + 0;
-            indices[i * 24 + 1] = i * 8 + 2;
-            indices[i * 24 + 2] = i * 8 + 1;
+            indices[i * indiceSpace + 0] = i * vertexSpace + 0;
+            indices[i * indiceSpace + 1] = i * vertexSpace + 2;
+            indices[i * indiceSpace + 2] = i * vertexSpace + 1;
 
-            indices[i * 24 + 3] = i * 8 + 1;
-            indices[i * 24 + 4] = i * 8 + 2;
-            indices[i * 24 + 5] = i * 8 + 3;
+            indices[i * indiceSpace + 3] = i * vertexSpace + 1;
+            indices[i * indiceSpace + 4] = i * vertexSpace + 2;
+            indices[i * indiceSpace + 5] = i * vertexSpace + 3;
 
-            indices[i * 24 + 6] = i * 8 + 0;
-            indices[i * 24 + 7] = i * 8 + 4;
-            indices[i * 24 + 8] = i * 8 + 5;
+            indices[i * indiceSpace + 6] = i * vertexSpace + 0;
+            indices[i * indiceSpace + 7] = i * vertexSpace + 4;
+            indices[i * indiceSpace + 8] = i * vertexSpace + 5;
 
-            indices[i * 24 + 9] = i * 8 + 5;
-            indices[i * 24 + 10] = i * 8 + 2;
-            indices[i * 24 + 11] = i * 8 + 0;
+            indices[i * indiceSpace + 9] = i * vertexSpace + 5;
+            indices[i * indiceSpace + 10] = i * vertexSpace + 2;
+            indices[i * indiceSpace + 11] = i * vertexSpace + 0;
             //-----------------------------------------
-            indices[i * 24 + 12] = i * 8 + 4;
-            indices[i * 24 + 13] = i * 8 + 6;
-            indices[i * 24 + 14] = i * 8 + 5;
+            indices[i * indiceSpace + 12] = i * vertexSpace + 4;
+            indices[i * indiceSpace + 13] = i * vertexSpace + 6;
+            indices[i * indiceSpace + 14] = i * vertexSpace + 5;
 
-            indices[i * 24 + 15] = i * 8 + 5;
-            indices[i * 24 + 16] = i * 8 + 6;
-            indices[i * 24 + 17] = i * 8 + 7;
+            indices[i * indiceSpace + 15] = i * vertexSpace + 5;
+            indices[i * indiceSpace + 16] = i * vertexSpace + 6;
+            indices[i * indiceSpace + 17] = i * vertexSpace + 7;
 
-            indices[i * 24 + 18] = i * 8 + 6;
-            indices[i * 24 + 19] = i * 8 + 1;
-            indices[i * 24 + 20] = i * 8 + 7;
+            indices[i * indiceSpace + 18] = i * vertexSpace + 6;
+            indices[i * indiceSpace + 19] = i * vertexSpace + 1;
+            indices[i * indiceSpace + 20] = i * vertexSpace + 7;
 
-            indices[i * 24 + 21] = i * 8 + 7;
-            indices[i * 24 + 22] = i * 8 + 1;
-            indices[i * 24 + 23] = i * 8 + 3;
+            indices[i * indiceSpace + 21] = i * vertexSpace + 7;
+            indices[i * indiceSpace + 22] = i * vertexSpace + 1;
+            indices[i * indiceSpace + 23] = i * vertexSpace + 3;
         }
 
 
@@ -619,17 +591,6 @@ public class NodeShow : MonoBehaviour
         mesh.RecalculateBounds();
         lineobject.mesh = mesh;
         lineobject.GetComponent<MeshCollider>().sharedMesh = mesh;
-
-
-        //lineRenderer.SetWidth(width,width);
-        //for (int i = 0; i < LineReadererPointsCount + 1; i++)
-        //{
-        //    float t = i / (float)LineReadererPointsCount;
-        //    Vector3 pixel = CalculateLinearBezierPoint(t, position1, position2, position3, position4);
-        //    Vector3 a = new Vector3(pixel.x, pixel.y, pixel.z);
-        //    lineRenderer.SetVertexCount(i + 1);
-        //    lineRenderer.SetPosition(i, a);
-        //}
     }
 
     private Vector3[] Bezier_CubicCurvePoints(Vector3 p1, Vector3 p2, Vector3 p3, Vector3 p4, int splits)
@@ -668,9 +629,8 @@ public class NodeShow : MonoBehaviour
         p += 3 * u * tt * p2;
         p += ttt * p3;
         return p;
-
     }
-    
+
     public List<GameObject> AddGraphLineVisual(string tooltipText, LinksStructure a)
     {
         GameObject lineGameObject = CreateLink(a);
